@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\VisitorTrack;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Artisan;
 class VisitorTrackController extends Controller
 {
     /**
@@ -14,24 +13,16 @@ class VisitorTrackController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function localizationChange($locale=null){
-                //\MyHelper::$availableLocales; //config('app.available_locales')
+        //return App::currentLocale();
+        //\MyHelper::$availableLocales; //config('app.available_locales')
 
         if (isset($locale) && !in_array($locale,\MyHelper::$availableLocales)) {
-            return redirect('/')->with('error','Something went wrong, try again later'); // if not found return where you want to
+            return back()->with('error','Something went wrong, try again later'); // if not found return where you want to
         }
 
         App::setLocale($locale);
-        //Artisan::call('optimize');;
-        return redirect('/')->with('success','Your desire language changed successfully');
-
-        // --------------- Or ------------
-
-        if (! in_array($locale, ['en', 'es', 'fr'])) {
-            abort(400); // if not found return where you want to
-        }
-        App::setLocale($locale);
-
-        //return redirect()->back();
+        session()->put(['locale'=>$locale]);
+        return back()->with('success','Your desire language changed successfully');
     }
 
     /**

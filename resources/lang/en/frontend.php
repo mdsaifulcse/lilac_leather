@@ -2,6 +2,7 @@
 
 return [
     'Login'=>'Login',
+    'All Departments'=>'All Departments',
     'Book Title'=>'Book Title',
     'Book Title Bn'=>'বইয়ের শিরোনাম',
     'Category Name'=>'Category',
