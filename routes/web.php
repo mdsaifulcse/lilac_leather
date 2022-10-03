@@ -273,6 +273,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Client'], function() {
     Route::get('/book/search-author', 'SearchAuthorBooksController@returnAuthorData');
 
     Route::get('/book-search', 'SearchProductController@searchProduct')->name('book.search');
+    Route::get('/tags-products', 'SearchProductController@searchTagsProduct')->name('tags.product');
 
 });
 
