@@ -15,6 +15,7 @@
         .card-horizontal .card-body a{font-size:14px;display:block;padding:1px;}
         .card-horizontal .card-body a:first-child{color: black;font-weight: 500;padding-bottom: 6px;}
     </style>
+    
 @endsection
 @section('content')
     <div id="content" class="">
