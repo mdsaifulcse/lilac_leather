@@ -77,6 +77,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="block-policy1">
+
                                         <ul>
                                             @forelse($category->subCategoryData as $subCategory)
                                             <li class="item-1">

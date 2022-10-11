@@ -68,6 +68,7 @@ class CompanyServiceProvider extends ServiceProvider
                 $socials=SocialIcon::orderBy('serial_num','ASC')->where(['status'=>SocialIcon::ACTIVE])->get();
                 $setting=Setting::first();
                 $cartProducts=[];
+                
 
                 if (Session::has('sessionId'))
                 {
