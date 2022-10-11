@@ -42,25 +42,10 @@ class CompanyServiceProvider extends ServiceProvider
             ],
             function ($view)
             {
-                $featureProducts=Product::statusFilterProducts(['status'=>Product::PUBLISHED,'is_feature'=>Product::YES,'show_home'=>Product::YES])->take(30)
-                    ->orderBy('products.id','DESC')->get();
-
-                $mostPopularProducts=Product::statusFilterProducts(['status'=>Product::PUBLISHED,'is_most_popular'=>Product::YES,'show_home'=>Product::YES])->take(30)
-                    ->orderBy('products.id','DESC')->get();
-
-                $newProducts=Product::statusFilterProducts(['status'=>Product::PUBLISHED,'is_new'=>Product::YES,'show_home'=>Product::YES])->take(30)
-                    ->orderBy('products.id','DESC')->get();
-
-                $readingListProducts=Product::statusFilterProducts(['status'=>Product::PUBLISHED,'added_reading_list'=>Product::YES,'show_home'=>Product::YES])->take(30)
-                    ->orderBy('products.id','DESC')->get();
-
-                $topRatedProducts=Product::filterTopRatedProducts(['status'=>Product::PUBLISHED,'show_home'=>Product::YES])->take(30)->get();
-
                 $biggapons=Biggapon::where(['status'=>Biggapon::ACTIVE,'show_on_page'=>Biggapon::HOME_PAGE])->orderBy('serial_num','ASC')->take(10)->get();
                 $sideA=Biggapon::where(['status'=>Biggapon::ACTIVE,'show_on_page'=>Biggapon::HOME_PAGE,'place'=>Biggapon::SIDE])->orderBy('serial_num','ASC')->take(3)->get();
 
-                $view->with(['featureProducts'=>$featureProducts,'mostPopularProducts'=>$mostPopularProducts,
-                    'newProducts'=>$newProducts,'readingListProducts'=>$readingListProducts,'topRatedProducts'=>$topRatedProducts,'biggapons'=>$biggapons,'sideA'=>$sideA]);
+                $view->with(['biggapons'=>$biggapons,'sideA'=>$sideA]);
             });
 
         View::composer( // for frontend menu --------------
@@ -75,7 +60,7 @@ class CompanyServiceProvider extends ServiceProvider
                 $menus=Menu::with('activeClientSubMenu')->where(['menu_for'=>Menu::CLIENT_MENU,'status'=>Menu::ACTIVE])
                     ->orderBy('serial_num','ASC')->get();
 
-                $categories=Category::with('subCategoryData')->select('id','category_name','category_name_bn','link','show_home','icon_photo')
+                $categories=Category::with('subCategoryData')->select('id','category_name','category_name_bn','link','short_description','show_home','icon_photo')
                     ->where(['status'=>Category::ACTIVE,'show_home'=>Category::YES])
                     ->orderBy('serial_num','ASC')->get();
                 $categories=collect($categories);
