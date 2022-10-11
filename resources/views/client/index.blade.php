@@ -14,8 +14,10 @@
         .card-horizontal .card-body{padding:20px 5px;}
         .card-horizontal .card-body a{font-size:14px;display:block;padding:1px;}
         .card-horizontal .card-body a:first-child{color: black;font-weight: 500;padding-bottom: 6px;}
+        .category-image{
+            padding-bottom: 12px;
+        }
     </style>
-    
 @endsection
 @section('content')
     <div id="content" class="">
@@ -42,8 +44,6 @@
                                             </div>
                                         </div>
                                     </div> <!--/.modcontent-->
-                                    <div class="form-group">
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -64,63 +64,81 @@
 
             </div> <!--End Slider Container-->
 
+
             <div class="container page-builder-ltr">
                 <div class="row row_7qar  row-style ">
+            @forelse($biggapons->where('place',\App\Models\Biggapon::MIDDLE)->take(1)->where('show_on_page',\App\Models\Biggapon::HOME_PAGE) as $i=>$middleBiggapon)
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_llqj  col-style">
+                    <div class="banners bannersb">
+                        <div class="banner"><a href="{{URL::to($middleBiggapon->target_url)}}"><img src="{{asset($middleBiggapon->image)}}" alt="image"></a></div>
+                    </div>
+                </div><!--end row-->
+        @empty
+        @endforelse<!--end row-->
+                </div>
+            </div>
 
+            <div class="container page-builder-ltr">
+                <div class="row row_7qar  row-style ">
                     @forelse($categories as $category)
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_vnrl  col-style">
-                        <!--[if gt IE 9]><!-->
-                        <div class="so-categories module theme3 custom-slidercates" style="margin-top:30px;marign-bottom:15px;">
-                            <h3 class="modtitle text-center"><span>{{__('frontend.Shop by Categories')}}</span></h3>
-                            <p>{{$category->short_description}}  </p>
-                            <div class="form-group"> <a class="viewall" href="{{URL::to('/book/categories')}}">View All</a></div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="block-policy1">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_4xg8  col-style">
+                        <div id="featureBook" class=" so-category-slider container-slider module so-category-slider-ltr cate-slider1">
+                            <h4 class="modtitle">{{__('frontend.Feature Product')}}</h4>
 
+                            <div class="modcontent">
+                                <div class="page-top">
+                                    <div class="item-sub-cat"><ul><li> <a href="{{URL::to('book/categories')}}" title="" target="_self">View All</a></li></ul></div>
+                                </div>
+                                <div class="text-center">
+                                    <img src="{{asset($category->icon_photo)}}" class="img-responsive center-block category-image" width="80px">
+                                    <p>{{$category->short_description}}</p>
+                                </div>
+
+                                <div class="categoryslider-content hide-featured preset01-6 preset02-4 preset03-3 preset04-2 preset05-1">
+                                    <div class="block-policy1">
                                         <ul>
                                             @forelse($category->subCategoryData as $subCategory)
-                                            <li class="item-1">
-                                                <a href="javascript:;" class="item-inner">
-                                                    {{--<i class="fa fa-facebook fa-2x"></i>--}}
-                                                    <img src="{{asset($subCategory->icon_photo)}}" class="img-responsive center-block" width="50px">
-                                                    <div class="content">
-                                                        <b>{{$subCategory->sub_category_name}}</b>
-                                                        <span>{{$subCategory->short_description}}</span>
-                                                    </div>
-                                                </a>
-                                            </li>
+                                                <li class="item-1">
+                                                    <a href="javascript:;" class="item-inner">
+                                                        {{--<i class="fa fa-book fa-2x"></i>--}}
+                                                        <img src="{{asset($subCategory->icon_photo)}}" class="img-responsive center-block" width="50px">
+                                                        <div class="content">
+
+                                                            <strong> {{$subCategory->sub_category_name}} </strong>
+                                                            <span>{{$subCategory->short_description}} </span>
+
+                                                        </div>
+                                                    </a>
+                                                </li>
                                             @empty
                                                 <li class="item-1">
                                                     <a href="javascript:;" class="item-inner">
-                                                        {{--<i class="fa fa-facebook fa-2x"></i>--}}
+                                                        <i class="fa fa-book fa-2x"></i>
                                                         <div class="content">
-                                                            <b>No Sub Cat Data</b>
-                                                            <span> No Data</span>
+                                                            <b>No Data</b>
                                                         </div>
                                                     </a>
                                                 </li>
                                             @endforelse
+
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div><!-- end row -->
+                    @empty
 
-                    </div>
-                        @empty
                     @endforelse
-                    <!-- end col-lg/md -->
-
                 </div>
-                <!-- end Shop by Categories row -->
             </div>
-            <!--End Feature Container -->
 
 
 
-        </div>
-    </div>
+
+
+        </div><!-- so-page-builder -->
+    </div><!-- end content -->
     @include('client.layouts.partials.right-side-menu')
 @endsection
 @section('script')
@@ -166,794 +184,6 @@
                 }
             },
         });
-    </script>
-
-    <script type="text/javascript">
-        //<![CDATA[ Feature Book
-        jQuery(document).ready(function ($) {
-            ;(function (element) {
-                var id = $("#featureBook");
-                var $element = $(element),
-                    $extraslider = $(".slider", $element),
-                    $featureslider = $('.product-feature', $element),
-                    _delay = 500,
-                    _duration = 800,
-                    _effect = 'none',
-                    total_item = 10;
-
-                var width_window = $(window).width();
-
-                $(window).on('load', function() {
-                    $extraslider.on("initialized.owl.carousel2", function () {
-                        var $item_active = $(".slider .owl2-item.active", $element);
-                        if ($item_active.length > 1 && _effect != "none") {
-                            _getAnimate($item_active);
-                        }
-                        else {
-                            var $item = $(".owl2-item", $element);
-                            $item.css({"opacity": 1, "filter": "alpha(opacity = 100)"});
-                        }
-                        $extraslider.show();
-                        $('.loading-placeholder', id).hide();
-                    }).owlCarousel2({
-                        rtl: false,
-                        margin: 20,
-                        slideBy: 1,
-                        autoplay: 0,
-                        autoplayHoverPause: 0,
-                        autoplayTimeout: 0,
-                        autoplaySpeed: 1000,
-                        startPosition: 0,
-                        mouseDrag: 1,
-                        touchDrag: 1,
-                        autoWidth: false,
-                        responsive: {
-                            0:{	items: 2,
-                                nav: total_item <= 1 ? false : ((true) ? true: false),
-                            },
-                            480:{ items: 2,
-                                nav: total_item <= 2 ? false : ((true) ? true: false),
-                            },
-                            768:{ items: 3,
-                                nav: total_item <= 3 ? false : ((true) ? true: false),
-                            },
-                            992:{ items: 4,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            },
-                            1200:{ items: 5,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            }
-                        },
-                        nav: true,
-                        loop: true,
-                        navSpeed: 500,
-                        navText: ["&#139;", "&#155;"],
-                        navClass: ["owl2-prev", "owl2-next"]
-                    });
-
-                    var height_slider = $('.slider', id).outerHeight();
-                    if (width_window > 1200) {
-                        $('.item-cat-image', id).css('min-height', height_slider-20);
-                    }
-                    else {
-                        $('.item-cat-image', id).removeAttr('style');
-                    }
-
-                    $( window ).resize(function() {
-                        var width_window = $(window).width();
-                        if (width_window > 1200) {
-                            $('.item-cat-image', id).css('min-height', height_slider-20);
-                        }
-                        else {
-                            $('.item-cat-image', id).removeAttr('style');
-                        }
-                    })
-                });
-
-            })("#featureBook");
-        });
-        //]]>
-    </script>
-
-
-    <script type="text/javascript">
-        //<![CDATA[ Bongobondho Bangladesh Indipendent
-        jQuery(document).ready(function ($) {
-            (function (element) {
-                var id = $("#bongobondhoBangladeshIndependent");
-                var $element = $(element),
-                    $extraslider = $(".slider", $element),
-                    $featureslider = $('.product-feature', $element),
-                    _delay = 500,
-                    _duration = 800,
-                    _effect = 'none',
-                    total_item = 10;
-
-                var width_window = $(window).width();
-
-                $(window).on('load', function() {
-                    $extraslider.on("initialized.owl.carousel2", function () {
-                        var $item_active = $(".slider .owl2-item.active", $element);
-                        if ($item_active.length > 1 && _effect != "none") {
-                            _getAnimate($item_active);
-                        }
-                        else {
-                            var $item = $(".owl2-item", $element);
-                            $item.css({"opacity": 1, "filter": "alpha(opacity = 100)"});
-                        }
-                        $extraslider.show();
-                        $('.loading-placeholder', id).hide();
-                    }).owlCarousel2({
-                        lrt: false,
-                        margin: 20,
-                        slideBy: 1,
-                        autoplay: 0,
-                        autoplayHoverPause: 0,
-                        autoplayTimeout: 0,
-                        autoplaySpeed: 1000,
-                        startPosition: 0,
-                        mouseDrag: 1,
-                        touchDrag: 1,
-                        autoWidth: false,
-                        responsive: {
-                            0:{	items: 2,
-                                nav: total_item <= 1 ? false : ((true) ? true: false),
-                            },
-                            480:{ items: 2,
-                                nav: total_item <= 2 ? false : ((true) ? true: false),
-                            },
-                            768:{ items: 3,
-                                nav: total_item <= 3 ? false : ((true) ? true: false),
-                            },
-                            992:{ items: 4,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            },
-                            1200:{ items: 5,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            }
-                        },
-                        nav: true,
-                        loop: true,
-                        navSpeed: 500,
-                        navText: ["&#139;", "&#155;"],
-                        navClass: ["owl2-prev", "owl2-next"]
-                    });
-
-                    var height_slider = $('.slider', id).outerHeight();
-                    if (width_window > 1200) {
-                        $('.item-cat-image', id).css('min-height', height_slider-20);
-                    }
-                    else {
-                        $('.item-cat-image', id).removeAttr('style');
-                    }
-
-                    $( window ).resize(function() {
-                        var width_window = $(window).width();
-                        if (width_window > 1200) {
-                            $('.item-cat-image', id).css('min-height', height_slider-20);
-                        }
-                        else {
-                            $('.item-cat-image', id).removeAttr('style');
-                        }
-                    })
-                });
-
-            })("#bongobondhoBangladeshIndependent");
-        });
-        //]]>
-    </script>
-    <script type="text/javascript">
-        //<![CDATA[ Bongobondho Bangladesh Indipendent
-        jQuery(document).ready(function ($) {
-            (function (element) {
-                var id = $("#bongobondhoPopular");
-                var $element = $(element),
-                    $extraslider = $(".slider", $element),
-                    $featureslider = $('.product-feature', $element),
-                    _delay = 500,
-                    _duration = 800,
-                    _effect = 'none',
-                    total_item = 10;
-
-                var width_window = $(window).width();
-
-                $(window).on('load', function() {
-                    $extraslider.on("initialized.owl.carousel2", function () {
-                        var $item_active = $(".slider .owl2-item.active", $element);
-                        if ($item_active.length > 1 && _effect != "none") {
-                            _getAnimate($item_active);
-                        }
-                        else {
-                            var $item = $(".owl2-item", $element);
-                            $item.css({"opacity": 1, "filter": "alpha(opacity = 100)"});
-                        }
-                        $extraslider.show();
-                        $('.loading-placeholder', id).hide();
-                    }).owlCarousel2({
-                        lrt: false,
-                        margin: 20,
-                        slideBy: 1,
-                        autoplay: 0,
-                        autoplayHoverPause: 0,
-                        autoplayTimeout: 0,
-                        autoplaySpeed: 1000,
-                        startPosition: 0,
-                        mouseDrag: 1,
-                        touchDrag: 1,
-                        autoWidth: false,
-                        responsive: {
-                            0:{	items: 2,
-                                nav: total_item <= 1 ? false : ((true) ? true: false),
-                            },
-                            480:{ items: 2,
-                                nav: total_item <= 2 ? false : ((true) ? true: false),
-                            },
-                            768:{ items: 3,
-                                nav: total_item <= 3 ? false : ((true) ? true: false),
-                            },
-                            992:{ items: 4,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            },
-                            1200:{ items: 5,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            }
-                        },
-                        nav: true,
-                        loop: true,
-                        navSpeed: 500,
-                        navText: ["&#139;", "&#155;"],
-                        navClass: ["owl2-prev", "owl2-next"]
-                    });
-
-                    var height_slider = $('.slider', id).outerHeight();
-                    if (width_window > 1200) {
-                        $('.item-cat-image', id).css('min-height', height_slider-20);
-                    }
-                    else {
-                        $('.item-cat-image', id).removeAttr('style');
-                    }
-
-                    $( window ).resize(function() {
-                        var width_window = $(window).width();
-                        if (width_window > 1200) {
-                            $('.item-cat-image', id).css('min-height', height_slider-20);
-                        }
-                        else {
-                            $('.item-cat-image', id).removeAttr('style');
-                        }
-                    })
-                });
-
-            })("#bongobondhoPopular");
-        });
-        //]]>
-    </script>
-    <script type="text/javascript">
-        //<![CDATA[ New Product
-        jQuery(document).ready(function ($) {
-            (function (element) {
-                var id = $("#newProduct");
-                var $element = $(element),
-                    $extraslider = $(".slider", $element),
-                    $featureslider = $('.product-feature', $element),
-                    _delay = 500,
-                    _duration = 800,
-                    _effect = 'none',
-                    total_item = 10;
-
-                var width_window = $(window).width();
-
-                $(window).on('load', function() {
-                    $extraslider.on("initialized.owl.carousel2", function () {
-                        var $item_active = $(".slider .owl2-item.active", $element);
-                        if ($item_active.length > 1 && _effect != "none") {
-                            _getAnimate($item_active);
-                        }
-                        else {
-                            var $item = $(".owl2-item", $element);
-                            $item.css({"opacity": 1, "filter": "alpha(opacity = 100)"});
-                        }
-                        $extraslider.show();
-                        $('.loading-placeholder', id).hide();
-                    }).owlCarousel2({
-                        lrt: false,
-                        margin: 20,
-                        slideBy: 1,
-                        autoplay: 0,
-                        autoplayHoverPause: 0,
-                        autoplayTimeout: 0,
-                        autoplaySpeed: 1000,
-                        startPosition: 0,
-                        mouseDrag: 1,
-                        touchDrag: 1,
-                        autoWidth: false,
-                        responsive: {
-                            0:{	items: 2,
-                                nav: total_item <= 1 ? false : ((true) ? true: false),
-                            },
-                            480:{ items: 2,
-                                nav: total_item <= 2 ? false : ((true) ? true: false),
-                            },
-                            768:{ items: 3,
-                                nav: total_item <= 3 ? false : ((true) ? true: false),
-                            },
-                            992:{ items: 4,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            },
-                            1200:{ items: 5,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            }
-                        },
-                        nav: true,
-                        loop: true,
-                        navSpeed: 500,
-                        navText: ["&#139;", "&#155;"],
-                        navClass: ["owl2-prev", "owl2-next"]
-                    });
-
-                    var height_slider = $('.slider', id).outerHeight();
-                    if (width_window > 1200) {
-                        $('.item-cat-image', id).css('min-height', height_slider-20);
-                    }
-                    else {
-                        $('.item-cat-image', id).removeAttr('style');
-                    }
-
-                    $( window ).resize(function() {
-                        var width_window = $(window).width();
-                        if (width_window > 1200) {
-                            $('.item-cat-image', id).css('min-height', height_slider-20);
-                        }
-                        else {
-                            $('.item-cat-image', id).removeAttr('style');
-                        }
-                    })
-                });
-
-            })("#newProduct");
-        });
-        //]]>
-    </script>
-    <script type="text/javascript">
-        //<![CDATA[ readingListBooks
-        jQuery(document).ready(function ($) {
-            (function (element) {
-                var id = $("#readingListBooks");
-                var $element = $(element),
-                    $extraslider = $(".slider", $element),
-                    $featureslider = $('.product-feature', $element),
-                    _delay = 500,
-                    _duration = 800,
-                    _effect = 'none',
-                    total_item = 10;
-
-                var width_window = $(window).width();
-
-                $(window).on('load', function() {
-                    $extraslider.on("initialized.owl.carousel2", function () {
-                        var $item_active = $(".slider .owl2-item.active", $element);
-                        if ($item_active.length > 1 && _effect != "none") {
-                            _getAnimate($item_active);
-                        }
-                        else {
-                            var $item = $(".owl2-item", $element);
-                            $item.css({"opacity": 1, "filter": "alpha(opacity = 100)"});
-                        }
-                        $extraslider.show();
-                        $('.loading-placeholder', id).hide();
-                    }).owlCarousel2({
-                        lrt: false,
-                        margin: 20,
-                        slideBy: 1,
-                        autoplay: 0,
-                        autoplayHoverPause: 0,
-                        autoplayTimeout: 0,
-                        autoplaySpeed: 1000,
-                        startPosition: 0,
-                        mouseDrag: 1,
-                        touchDrag: 1,
-                        autoWidth: false,
-                        responsive: {
-                            0:{	items: 2,
-                                nav: total_item <= 1 ? false : ((true) ? true: false),
-                            },
-                            480:{ items: 2,
-                                nav: total_item <= 2 ? false : ((true) ? true: false),
-                            },
-                            768:{ items: 3,
-                                nav: total_item <= 3 ? false : ((true) ? true: false),
-                            },
-                            992:{ items: 4,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            },
-                            1200:{ items: 5,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            }
-                        },
-                        nav: true,
-                        loop: true,
-                        navSpeed: 500,
-                        navText: ["&#139;", "&#155;"],
-                        navClass: ["owl2-prev", "owl2-next"]
-                    });
-
-                    var height_slider = $('.slider', id).outerHeight();
-                    if (width_window > 1200) {
-                        $('.item-cat-image', id).css('min-height', height_slider-20);
-                    }
-                    else {
-                        $('.item-cat-image', id).removeAttr('style');
-                    }
-
-                    $( window ).resize(function() {
-                        var width_window = $(window).width();
-                        if (width_window > 1200) {
-                            $('.item-cat-image', id).css('min-height', height_slider-20);
-                        }
-                        else {
-                            $('.item-cat-image', id).removeAttr('style');
-                        }
-                    })
-                });
-
-            })("#readingListBooks");
-        });
-        //]]>
-    </script>
-
-    <script type="text/javascript">
-        //<![CDATA[ HEALTH & BEAUTY
-        jQuery(document).ready(function ($) {
-            jQuery(document).ready(function ($) {
-                ;(function (element) {
-                    var id = $("#so_category_slider_191");
-                    var $element = $(element),
-                        $extraslider = $(".slider", $element),
-                        $featureslider = $('.product-feature', $element),
-                        _delay = 500,
-                        _duration = 800,
-                        _effect = 'none',
-                        total_item = 10;
-
-                    var width_window = $(window).width();
-
-                    $(window).on('load', function() {
-                        $extraslider.on("initialized.owl.carousel2", function () {
-                            var $item_active = $(".slider .owl2-item.active", $element);
-                            if ($item_active.length > 1 && _effect != "none") {
-                                _getAnimate($item_active);
-                            }
-                            else {
-                                var $item = $(".owl2-item", $element);
-                                $item.css({"opacity": 1, "filter": "alpha(opacity = 100)"});
-                            }
-                            $extraslider.show();
-                            $('.loading-placeholder', id).hide();
-                            // var $navpage = $(".page-top .page-title-categoryslider span", id);
-                            // $(".slider .owl2-controls", id).insertAfter($navpage);
-                            // $(".slider .owl2-dot", id).css("display", "none");
-
-                        }).owlCarousel2({
-                            rtl: false,
-                            margin: 20,
-                            slideBy: 1,
-                            autoplay: 0,
-                            autoplayHoverPause: 0,
-                            autoplayTimeout: 0,
-                            autoplaySpeed: 1000,
-                            startPosition: 0,
-                            mouseDrag: 1,
-                            touchDrag: 1,
-                            autoWidth: false,
-                            responsive: {
-                                0:{	items: 2,
-                                    nav: total_item <= 1 ? false : ((true) ? true: false),
-                                },
-                                480:{ items: 2,
-                                    nav: total_item <= 2 ? false : ((true) ? true: false),
-                                },
-                                768:{ items: 3,
-                                    nav: total_item <= 3 ? false : ((true) ? true: false),
-                                },
-                                992:{ items: 4,
-                                    nav: total_item <= 4 ? false : ((true) ? true: false),
-                                },
-                                1200:{ items: 5,
-                                    nav: total_item <= 4 ? false : ((true) ? true: false),
-                                }
-                            },
-                            nav: true,
-                            loop: true,
-                            navSpeed: 500,
-                            navText: ["&#139;", "&#155;"],
-                            navClass: ["owl2-prev", "owl2-next"]
-                        });
-
-                        var height_slider = $('.slider', id).outerHeight();
-                        if (width_window > 1200) {
-                            $('.item-cat-image', id).css('min-height', height_slider-20);
-                        }
-                        else {
-                            $('.item-cat-image', id).removeAttr('style');
-                        }
-
-                        $( window ).resize(function() {
-                            var width_window = $(window).width();
-                            if (width_window > 1200) {
-                                $('.item-cat-image', id).css('min-height', height_slider-20);
-                            }
-                            else {
-                                $('.item-cat-image', id).removeAttr('style');
-                            }
-                        })
-                    });
-
-                })("#so_category_slider_191");
-            });
-
-        });
-        //]]>
-    </script>
-
-    <script type="text/javascript">
-        //<![CDATA[  Storey, Poit, Novel
-        jQuery(document).ready(function ($) {
-            (function (element) {
-                var id = $("#StoriesNovelpPoems");
-                var $element = $(element),
-                    $extraslider = $(".slider", $element),
-                    $featureslider = $('.product-feature', $element),
-                    _delay = 500,
-                    _duration = 800,
-                    _effect = 'none',
-                    total_item = 10;
-
-                var width_window = $(window).width();
-
-                $(window).on('load', function() {
-                    $extraslider.on("initialized.owl.carousel2", function () {
-                        var $item_active = $(".slider .owl2-item.active", $element);
-                        if ($item_active.length > 1 && _effect != "none") {
-                            _getAnimate($item_active);
-                        }
-                        else {
-                            var $item = $(".owl2-item", $element);
-                            $item.css({"opacity": 1, "filter": "alpha(opacity = 100)"});
-                        }
-                        $extraslider.show();
-                        $('.loading-placeholder', id).hide();
-                    }).owlCarousel2({
-                        lrt: false,
-                        margin: 20,
-                        slideBy: 1,
-                        autoplay: 0,
-                        autoplayHoverPause: 0,
-                        autoplayTimeout: 0,
-                        autoplaySpeed: 1000,
-                        startPosition: 0,
-                        mouseDrag: 1,
-                        touchDrag: 1,
-                        autoWidth: false,
-                        responsive: {
-                            0:{	items: 2,
-                                nav: total_item <= 1 ? false : ((true) ? true: false),
-                            },
-                            480:{ items: 2,
-                                nav: total_item <= 2 ? false : ((true) ? true: false),
-                            },
-                            768:{ items: 3,
-                                nav: total_item <= 3 ? false : ((true) ? true: false),
-                            },
-                            992:{ items: 4,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            },
-                            1200:{ items: 5,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            }
-                        },
-                        nav: true,
-                        loop: true,
-                        navSpeed: 500,
-                        navText: ["&#139;", "&#155;"],
-                        navClass: ["owl2-prev", "owl2-next"]
-                    });
-
-                    var height_slider = $('.slider', id).outerHeight();
-                    if (width_window > 1200) {
-                        $('.item-cat-image', id).css('min-height', height_slider-20);
-                    }
-                    else {
-                        $('.item-cat-image', id).removeAttr('style');
-                    }
-
-                    $( window ).resize(function() {
-                        var width_window = $(window).width();
-                        if (width_window > 1200) {
-                            $('.item-cat-image', id).css('min-height', height_slider-20);
-                        }
-                        else {
-                            $('.item-cat-image', id).removeAttr('style');
-                        }
-                    })
-                });
-
-            })("#StoriesNovelpPoems");
-        });
-        //]]>
-    </script>
-    <script type="text/javascript">
-        //<![CDATA[  Most Popular
-        jQuery(document).ready(function ($) {
-            (function (element) {
-                var id = $("#mostPopular");
-                var $element = $(element),
-                    $extraslider = $(".slider", $element),
-                    $featureslider = $('.product-feature', $element),
-                    _delay = 500,
-                    _duration = 800,
-                    _effect = 'none',
-                    total_item = 10;
-
-                var width_window = $(window).width();
-
-                $(window).on('load', function() {
-                    $extraslider.on("initialized.owl.carousel2", function () {
-                        var $item_active = $(".slider .owl2-item.active", $element);
-                        if ($item_active.length > 1 && _effect != "none") {
-                            _getAnimate($item_active);
-                        }
-                        else {
-                            var $item = $(".owl2-item", $element);
-                            $item.css({"opacity": 1, "filter": "alpha(opacity = 100)"});
-                        }
-                        $extraslider.show();
-                        $('.loading-placeholder', id).hide();
-                    }).owlCarousel2({
-                        lrt: false,
-                        margin: 20,
-                        slideBy: 1,
-                        autoplay: 0,
-                        autoplayHoverPause: 0,
-                        autoplayTimeout: 0,
-                        autoplaySpeed: 1000,
-                        startPosition: 0,
-                        mouseDrag: 1,
-                        touchDrag: 1,
-                        autoWidth: false,
-                        responsive: {
-                            0:{	items: 2,
-                                nav: total_item <= 1 ? false : ((true) ? true: false),
-                            },
-                            480:{ items: 2,
-                                nav: total_item <= 2 ? false : ((true) ? true: false),
-                            },
-                            768:{ items: 3,
-                                nav: total_item <= 3 ? false : ((true) ? true: false),
-                            },
-                            992:{ items: 4,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            },
-                            1200:{ items: 5,
-                                nav: total_item <= 4 ? false : ((true) ? true: false),
-                            }
-                        },
-                        nav: true,
-                        loop: true,
-                        navSpeed: 500,
-                        navText: ["&#139;", "&#155;"],
-                        navClass: ["owl2-prev", "owl2-next"]
-                    });
-
-                    var height_slider = $('.slider', id).outerHeight();
-                    if (width_window > 1200) {
-                        $('.item-cat-image', id).css('min-height', height_slider-20);
-                    }
-                    else {
-                        $('.item-cat-image', id).removeAttr('style');
-                    }
-
-                    $( window ).resize(function() {
-                        var width_window = $(window).width();
-                        if (width_window > 1200) {
-                            $('.item-cat-image', id).css('min-height', height_slider-20);
-                        }
-                        else {
-                            $('.item-cat-image', id).removeAttr('style');
-                        }
-                    })
-                });
-
-            })("#mostPopular");
-        });
-        //]]>
-    </script>
-
-    <script type="text/javascript">
-        //<![CDATA[ Top Rated
-        jQuery(document).ready(function ($) {
-            ;(function (element) {
-                var id = $("#topRatedBook");
-                var $element = $(element),
-                    $extraslider = $(".slider", $element),
-                    $featureslider = $('.product-feature', $element),
-                    _delay = 500,
-                    _duration = 800,
-                    _effect = 'none',
-                    total_item = 10;
-
-                var width_window = $(window).width();
-
-                $(window).on('load', function() {
-                    $extraslider.on("initialized.owl.carousel2", function () {
-                        var $item_active = $(".slider .owl2-item.active", $element);
-                        if ($item_active.length > 1 && _effect != "none") {
-                            _getAnimate($item_active);
-                        }
-                        else {
-                            var $item = $(".owl2-item", $element);
-                            $item.css({"opacity": 1, "filter": "alpha(opacity = 100)"});
-                        }
-                        $extraslider.show();
-                        $('.loading-placeholder', id).hide();
-
-                    }).owlCarousel2({
-                        rtl: false,
-                        margin: 30,
-                        slideBy: 1,
-                        autoplay: 0,
-                        autoplayHoverPause: 0,
-                        autoplayTimeout: 0,
-                        autoplaySpeed: 1000,
-                        startPosition: 0,
-                        mouseDrag: 1,
-                        touchDrag: 1,
-                        autoWidth: false,
-                        responsive: {
-                            0:{	items: 2,
-                                nav: total_item <= 1 ? false : ((true) ? true: false),
-                            },
-                            480:{ items: 2,
-                                nav: total_item <= 2 ? false : ((true) ? true: false),
-                            },
-                            768:{ items: 2,
-                                nav: total_item <= 2 ? false : ((true) ? true: false),
-                            },
-                            992:{ items: 3,
-                                nav: total_item <= 3 ? false : ((true) ? true: false),
-                            },
-                            1200:{ items: 3,
-                                nav: total_item <= 3 ? false : ((true) ? true: false),
-                            }
-                        },
-                        nav: true,
-                        loop: true,
-                        navSpeed: 500,
-                        navText: ["&#139;", "&#155;"],
-                        navClass: ["owl2-prev", "owl2-next"]
-                    });
-
-                    var height_slider = $('.slider', id).outerHeight();
-                    if (width_window > 1200) {
-                        $('.item-cat-image', id).css('min-height', height_slider-20);
-                    }
-                    else {
-                        $('.item-cat-image', id).removeAttr('style');
-                    }
-
-                    $( window ).resize(function() {
-                        var width_window = $(window).width();
-                        if (width_window > 1200) {
-                            $('.item-cat-image', id).css('min-height', height_slider-20);
-                        }
-                        else {
-                            $('.item-cat-image', id).removeAttr('style');
-                        }
-                    })
-                });
-
-            })("#topRatedBook");
-        });
-        //]]>
     </script>
 
 @endsection

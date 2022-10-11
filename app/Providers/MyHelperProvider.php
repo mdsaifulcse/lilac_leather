@@ -14,8 +14,8 @@ class MyHelperProvider extends ServiceProvider
 
    public static $availableLocales = [
     'English' => 'en',
-    'Bengali' => 'bn',
-    'japanese' => 'ja',
+    //'Bengali' => 'bn',
+    'Italian' => 'it',
     ];
 
     // ---------------------- Date Time Start ---------------
@@ -23,6 +23,7 @@ class MyHelperProvider extends ServiceProvider
     // Numbers
     public static $bn_numbers = ["১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "০"];
     public static $en_numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+    public static $ja_numbers = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
 
     // Months
     public static $en_months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
