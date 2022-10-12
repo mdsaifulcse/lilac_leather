@@ -45,7 +45,7 @@
         },
         relativeTime : {
             future : 'osprei %s',
-            past : 'ja%s',
+            past : 'it%s',
             s : processRelativeTime,
             ss : processRelativeTime,
             m : processRelativeTime,

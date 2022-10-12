@@ -16,11 +16,12 @@
             <div class="current-name">
                 {{$categoryData->category_name}}-{{$categoryData->category_name_bn}}
             </div>
+
             <ul class="breadcrumb">
                 <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i></a></li>
-                <li><a href="javascript:void(0)">{{__('frontend.Book')}}</a></li>
-                <li><a href="{{URL::to('/book/categories')}}">{{__('frontend.Category Name Bn')}}</a></li>
-                <li><a href="{{URL::to('book/category/'.$categoryData->id.'?ref='.$categoryData->category_name)}}">{{$categoryData->category_name}}-{{$categoryData->category_name_bn}}</a></li>
+                <li><a href="javascript:void(0)">{{__('frontend.Product')}}</a></li>
+                <li><a href="{{URL::to("/product/categories?itemNo=$request->itemNo")}}">{{__('frontend.Category Name Bn')}}</a></li>
+                <li><a href="javascript:void(0)">{{__('frontend.item'.$request->itemNo)}}</a></li>
             </ul>
         </div>
     </div>

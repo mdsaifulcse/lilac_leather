@@ -126,7 +126,7 @@ return [
     'available_locales' => [
         'English' => 'en',
         'Bengali' => 'bn',
-        'japanese' => 'ja',
+        'japanese' => 'it',
     ],
 
     /*

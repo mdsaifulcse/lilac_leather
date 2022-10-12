@@ -26,7 +26,6 @@ class SearchProductController extends Controller
     {
         if (!is_null($categoryId))  // filter category products ----------
         {
-
             $categoryData=$this->checkCategory($categoryId);
         }
 
@@ -312,12 +311,20 @@ class SearchProductController extends Controller
 
     }
 
-    public function categoryListShow(){
-        $categories=Category::orderBy('serial_num','ASC')->where(['status'=>Category::ACTIVE])
-            ->select('id','category_name','category_name_bn','icon_photo')->paginate(50);
+    public function categoryListShow(Request $request){
+
+        $categories=Category::with('subCategoryData')->orderBy('serial_num','ASC')
+            ->where(['status'=>Category::ACTIVE])
+            ->select('id','category_name','category_name_bn','link','short_description','show_home','icon_photo');
+
+        if ($request->link){
+            $categories=$categories->where(['link'=>$request->link]);
+        }
+
+        $categories=$categories->paginate(50);
 
         $setting=$setting=DataLoad::setting();
-        return view('client.category-list',compact('setting','categories'));
+        return view('client.category-list',compact('setting','categories','request'));
     }
 
 }

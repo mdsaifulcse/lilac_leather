@@ -9161,7 +9161,7 @@
         },
         relativeTime : {
             future : 'osprei %s',
-            past : 'ja%s',
+            past : 'it%s',
             s : processRelativeTime$7,
             ss : processRelativeTime$7,
             m : processRelativeTime$7,

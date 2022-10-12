@@ -14,7 +14,7 @@ class MyHelperProvider extends ServiceProvider
 
    public static $availableLocales = [
     'English' => 'en',
-    //'Bengali' => 'bn',
+    'Bengali' => 'bn',
     'Italian' => 'it',
     ];
 

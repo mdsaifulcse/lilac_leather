@@ -262,17 +262,17 @@ Route::group(['namespace'=>'App\Http\Controllers\Client'], function() {
 
     Route::get('/topic/{topic}', 'CategoryNewsController@topicalNews');
 
-    Route::get('/book/details/{productId}/{productName?}', 'SearchProductController@singleProductDetails');
+    Route::get('/product/details/{productId}/{productName?}', 'SearchProductController@singleProductDetails');
 
-    Route::get('/book/category/{categoryId?}', 'SearchProductController@index');
-    Route::get('/book/categories', 'SearchProductController@categoryListShow');
-    Route::get('/book/search-category', 'SearchProductController@returnCategoryData');
+    Route::get('/product/category/{categoryId?}', 'SearchProductController@index');
+    Route::get('/product/categories', 'SearchProductController@categoryListShow');
+    Route::get('/product/search-category', 'SearchProductController@returnCategoryData');
 
-    Route::get('/book/author/{authorId?}', 'SearchAuthorBooksController@index');
-    Route::get('/book/authors', 'SearchAuthorBooksController@authorListShow');
-    Route::get('/book/search-author', 'SearchAuthorBooksController@returnAuthorData');
+    Route::get('/product/author/{authorId?}', 'SearchAuthorBooksController@index');
+    Route::get('/product/authors', 'SearchAuthorBooksController@authorListShow');
+    Route::get('/product/search-author', 'SearchAuthorBooksController@returnAuthorData');
 
-    Route::get('/book-search', 'SearchProductController@searchProduct')->name('book.search');
+    Route::get('/product-search', 'SearchProductController@searchProduct')->name('book.search');
     Route::get('/tags-products', 'SearchProductController@searchTagsProduct')->name('tags.product');
 
 });

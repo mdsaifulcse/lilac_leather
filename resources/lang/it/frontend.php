@@ -2,6 +2,9 @@
 
 return [
 
+    'item0'=>'Sfoglia per categoria di pelle',
+    'item1'=>'Sfoglia per categoria Juta',
+    'item2'=>'Sfoglia per categoria di abbigliamento',
     'Cash On Delivery'=>'ক্যাশ অন ডেলিভারি',
     '7 days happy return'=>'৭ দিন শুভ প্রত্যাবর্তন',
     'Delivery Charge Tk. 50(Online order)'=>'ডেলিভারি চার্জ টাকা 50 (অনলাইন অর্ডার)',
@@ -24,7 +27,7 @@ return [
     'My cart'=>'আমার কার্ট',
     'My Account'=>'আমার অ্যাকাউন্ট',
     'Author'=>'লেখক',
-    'Book'=>'বই',
+    'Product'=>'পণ্য',
     'Publisher'=>'প্রকাশক',
     'ISBN'=>'আইএসবিএন',
     'Edition'=>'সংস্করণ',

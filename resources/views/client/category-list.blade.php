@@ -102,6 +102,9 @@
             color: #f9f9f9;
             text-shadow: rgb(158 150 158 / 56%) 0 1px;
         }
+        .category-image{
+            padding-bottom: 12px;
+        }
     </style>
 @endsection
 @section('content')
@@ -119,26 +122,27 @@
             </div>
             <ul class="breadcrumb">
                 <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i></a></li>
-                <li><a href="javascript:void(0)">{{__('frontend.Book')}}</a></li>
-                <li><a href="{{URL::to('/book/categories')}}">{{__('frontend.Category Name Bn')}}</a></li>
+                <li><a href="javascript:void(0)">{{__('frontend.Product')}}</a></li>
+                <li><a href="{{URL::to("/product/categories?itemNo=$request->itemNo")}}">{{__('frontend.Category Name Bn')}}</a></li>
+                <li><a href="javascript:void(0)">{{__('frontend.item'.$request->itemNo)}}</a></li>
             </ul>
         </div>
     </div> <!-- end breadcrumbs-->
     <div class="content-main container product-detail ">
         <div class="row" style="position: relative;">
-            <div id="content" class="product-view col-md-12 col-sm-12 col-xs-12">
-                <img src="{{asset('images/default/allcategory.png')}}" alt="" class="authorBannerImg">
-                <p class="authorListText">
-                    ললক্ষাধিক বইয়ের সংগ্রহ {{$setting->company_name}} ডট কমে বইয়ের এই বিশাল সমুদ্র-মন্থনে পাঠকের সুবিধার্থে প্রায় ৫০ টির মতো ক্যাটাগরি ও সহস্রাধিক বিষয়ভিত্তিক ক্যাটাগরি রয়েছে {{$setting->company_name}} ডট কমে যার ফলে খুব সহজেই পাঠক তার পছন্দের ক্যাটাগরি বেছে নিয়ে নির্দিষ্ট বিষয়ভিত্তিক বইগুলো খুঁজে পাবে খুব সহজেই। {{$setting->company_name}} ডট কমের এই বিশাল বইয়ের সমুদ্রে জ্ঞানের জাহাজের নাবিক হতে আপনাকে নিমন্ত্রণ। মানচিত্রটা ধরা আছে নিচেই...।
-                </p>
-            </div>
+            {{--<div id="content" class="product-view col-md-12 col-sm-12 col-xs-12">--}}
+                {{--<img src="{{asset('images/default/allcategory.png')}}" alt="" class="authorBannerImg">--}}
+                {{--<p class="authorListText">--}}
+                    {{--ললক্ষাধিক বইয়ের সংগ্রহ {{$setting->company_name}} ডট কমে বইয়ের এই বিশাল সমুদ্র-মন্থনে পাঠকের সুবিধার্থে প্রায় ৫০ টির মতো ক্যাটাগরি ও সহস্রাধিক বিষয়ভিত্তিক ক্যাটাগরি রয়েছে {{$setting->company_name}} ডট কমে যার ফলে খুব সহজেই পাঠক তার পছন্দের ক্যাটাগরি বেছে নিয়ে নির্দিষ্ট বিষয়ভিত্তিক বইগুলো খুঁজে পাবে খুব সহজেই। {{$setting->company_name}} ডট কমের এই বিশাল বইয়ের সমুদ্রে জ্ঞানের জাহাজের নাবিক হতে আপনাকে নিমন্ত্রণ। মানচিত্রটা ধরা আছে নিচেই...।--}}
+                {{--</p>--}}
+            {{--</div>--}}
 
             <div class="product-view col-md-12 col-sm-12 col-xs-12">
                 <div class="authSearchArea">
                     <ul class="list-inline list-unstyled text-center">
                         <li><h1>{{__('frontend.Search your favorite category')}}</h1></li>
                         <li>
-                            <form class="navbar-form" role="search" action="{{URL::to('book/category/')}}" method="GET">
+                            <form class="navbar-form" role="search" action="{{URL::to('product/category/')}}" method="GET">
                                 <div class="form-group base searchFormArea">
                                     <input type="text" id="categoryField" name="category" class="form-control searchInput ui-autocomplete-input" placeholder="Enter your keyword" autocomplete="off" style="display:none;">
 
@@ -152,36 +156,98 @@
                 </div>
             </div>
 
-            <div class="product-view col-md-12 col-sm-12 col-xs-12">
-                <ul class="list-inline list-unstyled authorList">
-                    @forelse($categories as $category)
-                    <li>
-                        <a href="{{URL::to('/book/category/'.$category->id)}}" title="{{$category->category_name_bn}}">
-                        @if($category->icon_photo!=null and file_exists($category->icon_photo))
-                            <img class="img-fluid img-circle img-responsive center-block" src="{{asset($category->icon_photo)}}" alt="{{$category->category_name_bn}}" title="{{$category->category_name_bn}}">
-                        @else
-                            <img class="img-fluid img-circle img-responsive center-block" src="{{asset('images/default/author.png')}}" alt="{{$category->category_name_bn}}" title="{{$category->category_name_bn}}">
-                        @endif
+            <!-- -------------- -->
 
-                            <h2>  {{$category->category_name_bn}}</h2>
-                            <div class="authorHover">
-                                <p class="hoverName">Name:   {{$category->category_name_bn}}</p>
-                                <p class="hoverArow"><i class="fa fa-caret-down"></i></p>
+            <div class="container page-builder-ltr">
+                <div class="row row_7qar  row-style ">
+                    @forelse($categories as $category)
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_4xg8  col-style">
+                            <div id="featureBook" class=" so-category-slider container-slider module so-category-slider-ltr cate-slider1">
+                                <h4 class="modtitle">{{__('frontend.item'.$request->itemNo)}}</h4>
+
+                                <div class="modcontent">
+
+                                    <div class="text-center">
+                                        <a href="{{URL::to("product/category/$category->id?itemNo=$request->itemNo")}}">
+                                            <img src="{{asset($category->icon_photo?$category->icon_photo:'images/default/default-image-200x200.jpg')}}" class="img-responsive center-block category-image" width="80px">
+                                            <p>{{$category->short_description}}</p>
+                                        </a>
+                                    </div>
+
+                                    <div class="categoryslider-content hide-featured preset01-6 preset02-4 preset03-3 preset04-2 preset05-1">
+                                        <div class="block-policy1">
+                                            <ul>
+                                                @forelse($category->subCategoryData as $subCategory)
+                                                    <li class="item-1">
+                                                        <a href="{{URL::to("product/category/$category->id?sub_cat=$subCategory->link&itemNo=$request->itemNo")}}" class="item-inner">
+                                                            {{--<i class="fa fa-book fa-2x"></i>--}}
+                                                            <img src="{{asset($subCategory->icon_photo?$subCategory->icon_photo:'images/default/default.png')}}" class="img-responsive center-block" width="50px">
+                                                            <div class="content">
+
+                                                                <strong> {{$subCategory->sub_category_name}} </strong>
+                                                                <span>{{$subCategory->short_description}} </span>
+
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                @empty
+                                                    <li class="item-1">
+                                                        <a href="javascript:;" class="item-inner">
+                                                            <i class="fa fa-book fa-2x"></i>
+                                                            <div class="content">
+                                                                <b>No Data</b>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                @endforelse
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                    </li>
-                        @empty
+                        </div><!-- end row -->
+                    @empty
 
                     @endforelse
-                </ul>
-                <div class="product-filter product-filter-bottom filters-panel">
-                    <div class="row">
-                        <div class="row">
-                            <div class="col-sm-12 text-center">{!! $categories->links() !!}</div>
-                        </div>
-                    </div>
                 </div>
             </div>
+
+            <!-- -------------- -->
+
+
+
+            {{--<div class="product-view col-md-12 col-sm-12 col-xs-12">--}}
+                {{--<ul class="list-inline list-unstyled authorList">--}}
+                    {{--@forelse($categories as $category)--}}
+                    {{--<li>--}}
+                        {{--<a href="{{URL::to('/product/category/'.$category->id)}}" title="{{$category->category_name_bn}}">--}}
+                        {{--@if($category->icon_photo!=null and file_exists($category->icon_photo))--}}
+                            {{--<img class="img-fluid img-circle img-responsive center-block" src="{{asset($category->icon_photo)}}" alt="{{$category->category_name_bn}}" title="{{$category->category_name_bn}}">--}}
+                        {{--@else--}}
+                            {{--<img class="img-fluid img-circle img-responsive center-block" src="{{asset('images/default/author.png')}}" alt="{{$category->category_name_bn}}" title="{{$category->category_name_bn}}">--}}
+                        {{--@endif--}}
+
+                            {{--<h2>  {{$category->category_name_bn}}</h2>--}}
+                            {{--<div class="authorHover">--}}
+                                {{--<p class="hoverName">Name:   {{$category->category_name_bn}}</p>--}}
+                                {{--<p class="hoverArow"><i class="fa fa-caret-down"></i></p>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                        {{--@empty--}}
+
+                    {{--@endforelse--}}
+                {{--</ul>--}}
+                {{--<div class="product-filter product-filter-bottom filters-panel">--}}
+                    {{--<div class="row">--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-sm-12 text-center">{!! $categories->links() !!}</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+
         </div>
     </div>
 @endsection
@@ -205,7 +271,7 @@
                 autocomplete: {
                     source: function( request, response ) {
                         $.ajax({
-                            url: "{{URL::to('/book/search-category')}}",
+                            url: "{{URL::to('/product/search-category')}}",
                             dataType: "json",
                             data: {
                                 q: request.term

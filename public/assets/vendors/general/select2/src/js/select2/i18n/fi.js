@@ -7,12 +7,12 @@ define(function () {
     inputTooLong: function (args) {
       var overChars = args.input.length - args.maximum;
 
-      return 'Ole hyvä ja anna ' + overChars + ' merkkiä vähemmän';
+      return 'Ole hyvä it anna ' + overChars + ' merkkiä vähemmän';
     },
     inputTooShort: function (args) {
       var remainingChars = args.minimum - args.input.length;
 
-      return 'Ole hyvä ja anna ' + remainingChars + ' merkkiä lisää';
+      return 'Ole hyvä it anna ' + remainingChars + ' merkkiä lisää';
     },
     loadingMore: function () {
       return 'Ladataan lisää tuloksia…';

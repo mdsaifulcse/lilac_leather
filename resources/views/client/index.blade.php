@@ -80,18 +80,21 @@
 
             <div class="container page-builder-ltr">
                 <div class="row row_7qar  row-style ">
-                    @forelse($categories as $category)
+                    @forelse($categories as $key=>$category)
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_4xg8  col-style">
                         <div id="featureBook" class=" so-category-slider container-slider module so-category-slider-ltr cate-slider1">
-                            <h4 class="modtitle">{{__('frontend.Feature Product')}}</h4>
+                            <h4 class="modtitle">{{__('frontend.item'.$key)}}</h4>
 
                             <div class="modcontent">
                                 <div class="page-top">
-                                    <div class="item-sub-cat"><ul><li> <a href="{{URL::to('book/categories')}}" title="" target="_self">View All</a></li></ul></div>
+                                    <div class="item-sub-cat"><ul><li> <a href="{{URL::to("product/categories?link=$category->link&itemNo=$key")}}" title="" target="_self">View All</a></li></ul></div>
                                 </div>
                                 <div class="text-center">
-                                    <img src="{{asset($category->icon_photo)}}" class="img-responsive center-block category-image" width="80px">
-                                    <p>{{$category->short_description}}</p>
+                                    <a href="{{URL::to("product/category/$category->id?itemNo=$key")}}">
+                                        <img src="{{asset($category->icon_photo?$category->icon_photo:'images/default/default-image-200x200.jpg')}}" class="img-responsive center-block category-image" width="80px">
+                                        <p>{{$category->short_description}}</p>
+                                    </a>
+
                                 </div>
 
                                 <div class="categoryslider-content hide-featured preset01-6 preset02-4 preset03-3 preset04-2 preset05-1">
@@ -99,9 +102,9 @@
                                         <ul>
                                             @forelse($category->subCategoryData as $subCategory)
                                                 <li class="item-1">
-                                                    <a href="javascript:;" class="item-inner">
+                                                    <a href="{{URL::to("product/category/$category->id?sub_cat=$subCategory->link&itemNo=$key")}}" class="item-inner">
                                                         {{--<i class="fa fa-book fa-2x"></i>--}}
-                                                        <img src="{{asset($subCategory->icon_photo)}}" class="img-responsive center-block" width="50px">
+                                                        <img src="{{asset($subCategory->icon_photo?$subCategory->icon_photo:'images/default/default.png')}}" class="img-responsive center-block" width="50px">
                                                         <div class="content">
 
                                                             <strong> {{$subCategory->sub_category_name}} </strong>
