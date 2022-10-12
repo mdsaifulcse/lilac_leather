@@ -56,7 +56,6 @@ class CategorySeeder extends Seeder
         ];
 
         $category=Category::first();
-
         if (empty($category)){
             Category::insert($categories);
         }

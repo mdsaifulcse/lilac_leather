@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\SubCategory;
 use Database\Factories\PermissionFactory;
 use Database\Factories\UserRolePermissionFactory;
 use Illuminate\Database\Seeder;
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             UserRolePermissionsSeeder::class,
             MenuSeeder::class,
             CategorySeeder::class,
+            SubCategorySeeder::class,
             AuthorSeeder::class,
             PublisherSeeder::class,
             CountrySeeder::class,
