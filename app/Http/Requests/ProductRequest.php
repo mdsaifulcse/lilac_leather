@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
             'name_bn' => 'max:255|unique:products,name_bn,NULL,id,deleted_at,NULL',
             'keyword' => 'nullable|max:200',
             'category_id'=>'required|exists:categories,id',
-            'sub_cat_id'=>'nullable|exists:sub_categories,id',
+            'sub_cat_id'=>'required|exists:sub_categories,id',
             'third_category_id'=>'nullable|exists:third_sub_categories,id',
             'fourth_category_id'=>'nullable|exists:fourth_sub_categories,id',
             'brand_id'=>'nullable|exists:brands,id',

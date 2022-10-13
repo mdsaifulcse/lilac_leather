@@ -282,82 +282,21 @@
                         <div class="content-product-midde clearfix">
                             <div class="producttab ">
                                 <div class="tabsslider vertical-tabs  vertical-tabs  col-xs-12">
-                                    <h4>Book Specification & Summary</h4>
+                                    <h4>{{__('admin.Product Specification & Summary')}}</h4>
                                     <ul class="nav nav-tabs col-lg-12 col-sm-4">
-                                        <li class="active"><a data-toggle="tab" href="#tab-summery">{{__('frontend.Summary')}} </a></li>
-                                        <li><a data-toggle="tab" href="#tab-description">{{__('frontend.Specification')}} </a></li>
-                                        <li><a data-toggle="tab" href="#tab-author">{{__('frontend.Author')}} </a></li>
+                                        <li class="active"><a data-toggle="tab" href="#tab-specification">{{__('frontend.Specification')}} </a></li>
+                                        <li><a data-toggle="tab" href="#tab-description">{{__('frontend.Description')}} </a></li>
+                                        {{--<li><a data-toggle="tab" href="#tab-author">{{__('frontend.Author')}} </a></li>--}}
                                         <li><a href="#tab-review" data-toggle="tab">{{__('frontend.Review')}}</a></li>
                                         <li><a href="#tab-contentshipping" data-toggle="tab">{{__('frontend.Shipping Method')}}</a></li>
                                     </ul>
                                     <div class="tab-content  col-lg-12 col-sm-8  col-xs-12">
-                                        <div class="tab-pane active" id="tab-summery">
+                                        <div class="tab-pane active" id="tab-specification">
                                             <?php echo $product->specification?>
                                         </div>
+
                                         <div class="tab-pane" id="tab-description">
-                                            <table class="table table-striped table-bordered table-hover" style="font-size:15px;">
-                                                <tbody>
-                                                <tr>
-                                                    <td width="20%" class="bg-info">{{__('frontend.Book Title Bn')}}</td>
-                                                    <td class="text-left">{{$product->name_bn}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="20%" class="bg-info">{{__('frontend.Author')}}</td>
-                                                    <td class="text-left">
-                                                        @forelse($product->relProductAuthorsName as $author)
-                                                            <a href="{{URL::to('/book/author/'.$author->id)}}" class="text-primary">{{$author->name.', '}}</a>
-                                                        @empty
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="20%" class="bg-info">{{__('frontend.Publisher')}}</td>
-                                                    <td class="text-left">
-                                                        {{--{{URL::to('/book/publisher/'.$product->id)}}--}}
-                                                        <a href="#" class="text-primary">{{$product->publisher->name}}
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="20%" class="bg-info">{{__('frontend.ISBN')}}</td>
-                                                    <td class="text-left">{{$product->isbn}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="20%" class="bg-info">{{__('frontend.Edition')}}</td>
-                                                    <td class="text-left">{{$product->edition}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="20%" class="bg-info">{{__('frontend.Number of page')}}</td>
-                                                    <td class="text-left">{{$product->number_of_page}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="20%" class="bg-info">{{__('frontend.Country')}}</td>
-                                                    <td class="text-left">{{$product->Country->name}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="20%" class="bg-info">{{__('frontend.Language')}}</td>
-                                                    <td class="text-left">{{$product->language->name}}</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="tab-pane" id="tab-author">
-                                            @forelse($product->relProductAuthorsName as $author)
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        @if($author->photo!=null and file_exists($author->photo))
-                                                        <img class="img-fluid img-circle img-responsive center-block" src="{{asset($author->photo)}}" alt="{{$author->name}}" title="{{$author->name}}">
-                                                            @else
-                                                            <img class="img-fluid img-circle img-responsive center-block" src="{{asset('images/default/author.png')}}" alt="{{$author->name}}" title="{{$author->name}}">
-                                                        @endif
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <h3>{{$author->name}}</h3>
-                                                        <?php echo $author->bio?>
-                                                    </div>
-                                                </div>
-                                            @empty
-                                            @endif
+                                            <?php echo $product->description?>
                                         </div>
 
                                         <div class="tab-pane" id="tab-review">

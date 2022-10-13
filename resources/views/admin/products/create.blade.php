@@ -105,19 +105,19 @@
                                         {{--</div>--}}
                                     {{--</div>--}}
 
-                                    <div>
-                                        <label for="example-text-input" class="col-form-label">Short Description<sup class="text-danger">*</sup></label>
-                                        <div class="">
-                                            {!! Form::textArea('short_description', $value=old('short_description'), ['rows'=>4,'placeholder' => '','class' => 'form-control textarea','required'=>false]) !!}
+                                    {{--<div>--}}
+                                        {{--<label for="example-text-input" class="col-form-label">Short Description<sup class="text-danger">*</sup></label>--}}
+                                        {{--<div class="">--}}
+                                            {{--{!! Form::textArea('short_description', $value=old('short_description'), ['rows'=>4,'placeholder' => '','class' => 'form-control textarea','required'=>false]) !!}--}}
 
-                                            @if ($errors->has('short_description'))
-                                                <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('short_description') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                        <span id="shortDescriptionError" class="text-danger"></span>
-                                    </div>
+                                            {{--@if ($errors->has('short_description'))--}}
+                                                {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('short_description') }}</strong>--}}
+                                            {{--</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+                                        {{--<span id="shortDescriptionError" class="text-danger"></span>--}}
+                                    {{--</div>--}}
 
                                     <div>
                                         <label for="example-text-input" class="col-form-label">Description<sup class="text-danger">*</sup></label>
@@ -290,7 +290,7 @@
 
 
                                         <div class="col-md-8 col-lg-12">
-                                            <label for="example-text-input" class=" col-form-label">{{__('Related Products')}}</label>
+                                            <label for="example-text-input" class=" col-form-label">{{__('admin.Related Products')}}</label>
                                             <div class="">
                                                 {!! Form::select('child_id[]', $relatedProductLists,[], array('id'=>'kt_select2_2_3','class' => 'form-control kt-select2','multiple'=>true,'required'=>false)) !!}
 
@@ -491,27 +491,27 @@
                                         @endif
                                     </div>
 
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">Show at home page?<sup class="text-danger">*</sup></label>
-                                        {!! Form::select('show_home', $yesNoStatus,[], ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">Show at home page?<sup class="text-danger">*</sup></label>--}}
+                                        {{--{!! Form::select('show_home', $yesNoStatus,[], ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}--}}
 
-                                        @if ($errors->has('show_home'))
-                                            <span class="help-block">
-                                            <strong class="text-danger">{{ $errors->first('show_home') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
+                                        {{--@if ($errors->has('show_home'))--}}
+                                            {{--<span class="help-block">--}}
+                                            {{--<strong class="text-danger">{{ $errors->first('show_home') }}</strong>--}}
+                                        {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
 
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">Is feature?<sup class="text-danger">*</sup></label>
-                                        {!! Form::select('is_feature', $yesNoStatus,[], ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">Is feature?<sup class="text-danger">*</sup></label>--}}
+                                        {{--{!! Form::select('is_feature', $yesNoStatus,[], ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}--}}
 
-                                        @if ($errors->has('is_feature'))
-                                            <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('is_feature') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
+                                        {{--@if ($errors->has('is_feature'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('is_feature') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
 
                                     {{--<div class="">--}}
                                         {{--<label for="example-text-input" class="col-form-label">Is New Book?<sup class="text-danger">*</sup></label>--}}

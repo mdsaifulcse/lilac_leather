@@ -9,6 +9,9 @@ return [
     'Specification'=>'Specification',
     'Third Sub-Category'=>'Third Sub-Category',
     'Summery'=>'Summery',
+    'Related Products'=>'Related Products',
+    'Product Specification & Summary'=>'Product Specification & Summary',
+    'Description'=>'Description',
 ];
 
 

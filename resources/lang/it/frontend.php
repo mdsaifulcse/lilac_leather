@@ -37,6 +37,7 @@ return [
     'Review'=>'Revisione',
     'Shipping Method'=>'Metodo di spedizione',
     'Specification'=>'Specifica',
+    'Description'=>'Descrizione',
     'Summary'=>'Riepilogo',
     'SHARE THIS'=>'CONDIVIDI QUESTO',
     'Share with qrcode'=>'Condividi con codice QR',

@@ -64,7 +64,7 @@
                                     <div class="row">
 
                                         <div class="col-md-8">
-                                            <label for="name" class="col-form-label">{{__('Book Title')}}<sup class="text-danger">*</sup></label>
+                                            <label for="name" class="col-form-label">{{__('admin.Product Title')}}<sup class="text-danger">*</sup></label>
                                             {!! Form::text('name', $value=old('name',$product->name), array('placeholder' => 'Enter product name here *','class' => 'form-control','required'=>false)) !!}
 
                                             @if ($errors->has('name'))
@@ -82,49 +82,74 @@
                                     </div>
 
 
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label for="example-text-input" class="col-form-label"> {{__('ISBN No.')}}<sup class="text-danger">*</sup></label>
-                                            {!! Form::text('isbn', $value=old('isbn',$product->isbn), ['placeholder' => 'Product ISBN Here ','class' => 'form-control','required'=>true]) !!}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-4">--}}
+                                            {{--<label for="example-text-input" class="col-form-label"> {{__('ISBN No.')}}<sup class="text-danger">*</sup></label>--}}
+                                            {{--{!! Form::text('isbn', $value=old('isbn',$product->isbn), ['placeholder' => 'Product ISBN Here ','class' => 'form-control','required'=>true]) !!}--}}
 
-                                            @if ($errors->has('isbn'))
-                                                <span class="help-block"><strong class="text-danger">{{ $errors->first('isbn') }}</strong></span>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="example-text-input" class="col-form-label"> {{__('Edition')}}<sup class="text-danger">*</sup></label>
-                                            {!! Form::text('edition', $value=old('edition',$product->edition), ['placeholder' => 'Product Edition Here ','class' => 'form-control','required'=>true]) !!}
+                                            {{--@if ($errors->has('isbn'))--}}
+                                                {{--<span class="help-block"><strong class="text-danger">{{ $errors->first('isbn') }}</strong></span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-4">--}}
+                                            {{--<label for="example-text-input" class="col-form-label"> {{__('Edition')}}<sup class="text-danger">*</sup></label>--}}
+                                            {{--{!! Form::text('edition', $value=old('edition',$product->edition), ['placeholder' => 'Product Edition Here ','class' => 'form-control','required'=>true]) !!}--}}
 
-                                            @if ($errors->has('edition'))
-                                                <span class="help-block"><strong class="text-danger">{{ $errors->first('edition') }}<sup class="text-danger">*</sup></strong></span>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label for="example-text-input" class="col-form-label"> {{__('Number of page')}}<sup class="text-danger">*</sup></label>
-                                            {!! Form::text('number_of_page', $value=old('number_of_page',$product->number_of_page), ['placeholder' => 'Total number of page ','class' => 'form-control','required'=>true]) !!}
+                                            {{--@if ($errors->has('edition'))--}}
+                                                {{--<span class="help-block"><strong class="text-danger">{{ $errors->first('edition') }}<sup class="text-danger">*</sup></strong></span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-4">--}}
+                                            {{--<label for="example-text-input" class="col-form-label"> {{__('Number of page')}}<sup class="text-danger">*</sup></label>--}}
+                                            {{--{!! Form::text('number_of_page', $value=old('number_of_page',$product->number_of_page), ['placeholder' => 'Total number of page ','class' => 'form-control','required'=>true]) !!}--}}
 
-                                            @if ($errors->has('number_of_page'))
-                                                <span class="help-block"><strong class="text-danger">{{ $errors->first('number_of_page') }}</strong></span>
-                                            @endif
-                                        </div>
-                                    </div>
+                                            {{--@if ($errors->has('number_of_page'))--}}
+                                                {{--<span class="help-block"><strong class="text-danger">{{ $errors->first('number_of_page') }}</strong></span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div>--}}
+                                        {{--<label for="example-text-input" class="col-form-label">Short Description<sup class="text-danger">*</sup></label>--}}
+                                        {{--<div class="">--}}
+                                            {{--{!! Form::textArea('short_description', $value=old('short_description',$product->short_description), ['rows'=>4,'placeholder' => '','class' => 'form-control textarea','required'=>false]) !!}--}}
 
+                                            {{--@if ($errors->has('short_description'))--}}
+                                                {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('short_description') }}</strong>--}}
+                                            {{--</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+                                        {{--<span id="shortDescriptionError" class="text-danger"></span>--}}
+                                    {{--</div>--}}
 
                                     <div>
-                                        <label for="example-text-input" class="col-form-label">{{__('admin.Summery')}}<sup class="text-danger">*</sup></label>
+                                        <label for="example-text-input" class="col-form-label">{{__('admin.Description')}}Description<sup class="text-danger">*</sup></label>
                                         <div class="">
-                                            {!! Form::textArea('specification', $value=old('specification',$product->specification), ['rows'=>5,'placeholder' =>__('admin.Summery'),'class' => 'form-control textarea','required'=>false]) !!}
+                                            {!! Form::textArea('description', $value=old('description',$product->description), ['rows'=>5,'placeholder' => '','class' => 'form-control textarea','required'=>false]) !!}
                                             <strong class="text-default pull-right description-error"><span id="character_count">0</span> /10000 </strong>
+                                            @if ($errors->has('description'))
+                                                <span class="help-block">
+                                                <strong class="text-danger">{{ $errors->first('description') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                        <span id="descriptionError" class="text-danger"></span>
+                                    </div>
+
+                                    <div>
+                                        <label for="example-text-input" class="col-form-label">{{__('admin.Specification')}}</label>
+                                        <div class="">
+                                            {!! Form::textArea('specification', $value=old('specification',$product->specification), ['rows'=>5,'placeholder' => '','class' => 'form-control textarea','required'=>false]) !!}
 
                                             @if ($errors->has('specification'))
-                                                <span class="help-block"><strong class="text-danger">{{ $errors->first('specification') }}</strong></span>
+                                                <span class="help-block">
+                                                <strong class="text-danger">{{ $errors->first('specification') }}</strong>
+                                            </span>
                                             @endif
                                         </div>
                                         <span id="specificationError" class="text-danger"></span>
                                     </div>
-
                                     <hr>
-
                                     <span>Price Section ৳</span>
                                     <div style="border: 1px dashed #060247;padding: 10px;">
                                         <div class="row"> <!--Start price -->
@@ -302,7 +327,7 @@
                                     <div class="row">
 
                                         <div class="col-md-6 col-lg-12">
-                                            <label for="example-text-input" class=" col-form-label">Related Products</label>
+                                            <label for="example-text-input" class=" col-form-label">{{__('admin.Related Products')}}</label>
                                             <div class="">
                                                 {!! Form::select('child_id[]', $relatedProductLists,$relatedProducts, array('id'=>'kt_select2_2_3','class' => 'form-control kt-select2','multiple'=>true,'required'=>false)) !!}
 
@@ -406,74 +431,74 @@
 
                                 <div class="form-group col-md-3 col-lg-3 dropdownSec">
 
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">{{_('Author')}} </label>
-                                        {!! Form::select('author_id[]',$authorLists,$bookAuthors, ['placeholder' => '--Select Author --','multiple'=>true,'class' => 'form-control select2tags','required'=>false]) !!}
-
-                                        @if ($errors->has('author_id'))
-                                            <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('author_id') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">{{_('Puplisher')}} <sup class="text-danger">*</sup></label>
-                                        {!! Form::select('publisher_id',$publisherLists,$product->publisher_id, ['id'=>'kt_select2_2','placeholder' => '--Select Publisher --','class' => 'form-control','required'=>true]) !!}
-
-                                        @if ($errors->has('publisher_id'))
-                                            <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('publisher_id') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">{{_('Language')}} <sup class="text-danger">*</sup></label>
-                                        {!! Form::select('language_id',$languageLists,$product->language_id, ['placeholder' => '--Select Language --','class' => 'form-control','required'=>true]) !!}
-
-                                        @if ($errors->has('language_id'))
-                                            <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('language_id') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">{{_('Country')}}  <sup class="text-danger">*</sup></label>
-                                        {!! Form::select('country_id',$countryLists,$product->country_id, ['id'=>'kt_select2_2_1','placeholder' => '--Select Country --','class' => 'form-control select2tags','required'=>true]) !!}
-
-                                        @if ($errors->has('country_id'))
-                                            <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('country_id') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-
-
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">Vat | Tax</label>
-                                        {!! Form::select('vat_tax_id',$vatTaxes,$product->vat_tax_id, ['placeholder' => '--Select Vat|Tax--','class' => 'form-control','required'=>false]) !!}
-
-                                        @if ($errors->has('vat_tax_id'))
-                                            <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('vat_tax_id') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
                                     {{--<div class="">--}}
-                                        {{--<label for="example-text-input" class="col-form-label">Brand</label>--}}
-                                        {{--{!! Form::select('brand_id',$brands,$product->brand_id, ['id'=>'kt_select2_2_2','placeholder' => '--Select brand --','class' => 'form-control','required'=>false]) !!}--}}
+                                        {{--<label for="example-text-input" class="col-form-label">{{_('Author')}} </label>--}}
+                                        {{--{!! Form::select('author_id[]',$authorLists,$bookAuthors, ['placeholder' => '--Select Author --','multiple'=>true,'class' => 'form-control select2tags','required'=>false]) !!}--}}
 
-                                        {{--@if ($errors->has('brand_id'))--}}
+                                        {{--@if ($errors->has('author_id'))--}}
                                             {{--<span class="help-block">--}}
-                                                {{--<strong class="text-danger">{{ $errors->first('brand_id') }}</strong>--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('author_id') }}</strong>--}}
                                             {{--</span>--}}
                                         {{--@endif--}}
                                     {{--</div>--}}
 
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">{{_('Puplisher')}} <sup class="text-danger">*</sup></label>--}}
+                                        {{--{!! Form::select('publisher_id',$publisherLists,$product->publisher_id, ['id'=>'kt_select2_2','placeholder' => '--Select Publisher --','class' => 'form-control','required'=>true]) !!}--}}
+
+                                        {{--@if ($errors->has('publisher_id'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('publisher_id') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
+
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">{{_('Language')}} <sup class="text-danger">*</sup></label>--}}
+                                        {{--{!! Form::select('language_id',$languageLists,$product->language_id, ['placeholder' => '--Select Language --','class' => 'form-control','required'=>true]) !!}--}}
+
+                                        {{--@if ($errors->has('language_id'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('language_id') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
+
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">{{_('Country')}}  <sup class="text-danger">*</sup></label>--}}
+                                        {{--{!! Form::select('country_id',$countryLists,$product->country_id, ['id'=>'kt_select2_2_1','placeholder' => '--Select Country --','class' => 'form-control select2tags','required'=>true]) !!}--}}
+
+                                        {{--@if ($errors->has('country_id'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('country_id') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
+
+
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">Vat | Tax</label>--}}
+                                        {{--{!! Form::select('vat_tax_id',$vatTaxes,$product->vat_tax_id, ['placeholder' => '--Select Vat|Tax--','class' => 'form-control','required'=>false]) !!}--}}
+
+                                        {{--@if ($errors->has('vat_tax_id'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('vat_tax_id') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
+                                    <div class="">
+                                        <label for="example-text-input" class="col-form-label">Brand</label>
+                                        {!! Form::select('brand_id',$brands,$product->brand_id, ['id'=>'kt_select2_2_2','placeholder' => '--Select brand --','class' => 'form-control','required'=>false]) !!}
+
+                                        @if ($errors->has('brand_id'))
+                                            <span class="help-block">
+                                                <strong class="text-danger">{{ $errors->first('brand_id') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+
                                     <div class="category">
-                                        <label for="example-text-input" class="col-form-label">{{__('admin.Category Name Bn')}}<sup class="text-danger">*</sup></label>
+                                        <label for="example-text-input" class="col-form-label">{{__('admin.Category Name')}}<sup class="text-danger">*</sup></label>
 
                                         {!! Form::select('category_id',$categories,$product->category_id, ['id'=>'loadSubCategory','placeholder' => '--Select Category --','class' => 'form-control select2tags','required'=>true]) !!}
 
@@ -485,7 +510,7 @@
                                     </div>
 
                                     <div>
-                                        <label for="example-text-input" class="col-form-label">{{__('admin.Sub Category Name Bn')}}</label>
+                                        <label for="example-text-input" class="col-form-label">{{__('admin.Sub Category Name')}}</label>
                                         <div class="" id="subCategoryList">
                                             {!! Form::select('subcategory_id',$subCategories,$product->subcategory_id, ['id'=>'loadThirdSubCategory','placeholder' => '--Select Sub-category--','class' => 'form-control select2tags','required'=>false]) !!}
 
@@ -535,59 +560,59 @@
                                         @endif
                                     </div>
 
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">Show at home page?<sup class="text-danger">*</sup></label>
-                                        {!! Form::select('show_home', $yesNoStatus,$product->show_home, ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">Show at home page?<sup class="text-danger">*</sup></label>--}}
+                                        {{--{!! Form::select('show_home', $yesNoStatus,$product->show_home, ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}--}}
 
-                                        @if ($errors->has('show_home'))
-                                            <span class="help-block">
-                                            <strong class="text-danger">{{ $errors->first('show_home') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div>
+                                        {{--@if ($errors->has('show_home'))--}}
+                                            {{--<span class="help-block">--}}
+                                            {{--<strong class="text-danger">{{ $errors->first('show_home') }}</strong>--}}
+                                        {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
 
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">Is feature?<sup class="text-danger">*</sup></label>
-                                        {!! Form::select('is_feature', $yesNoStatus,$product->is_feature, ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">Is feature?<sup class="text-danger">*</sup></label>--}}
+                                        {{--{!! Form::select('is_feature', $yesNoStatus,$product->is_feature, ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}--}}
 
-                                        @if ($errors->has('is_feature'))
-                                            <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('is_feature') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">Is New Book?<sup class="text-danger">*</sup></label>
-                                        {!! Form::select('is_new', $yesNoStatus,$product->is_new, ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}
+                                        {{--@if ($errors->has('is_feature'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('is_feature') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">Is New Book?<sup class="text-danger">*</sup></label>--}}
+                                        {{--{!! Form::select('is_new', $yesNoStatus,$product->is_new, ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}--}}
 
-                                        @if ($errors->has('is_new'))
-                                            <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('is_new') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
+                                        {{--@if ($errors->has('is_new'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('is_new') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
 
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">Added to reading list?<sup class="text-danger">*</sup></label>
-                                        {!! Form::select('added_reading_list', $yesNoStatus,$product->added_reading_list, ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">Added to reading list?<sup class="text-danger">*</sup></label>--}}
+                                        {{--{!! Form::select('added_reading_list', $yesNoStatus,$product->added_reading_list, ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}--}}
 
-                                        @if ($errors->has('added_reading_list'))
-                                            <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('added_reading_list') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
+                                        {{--@if ($errors->has('added_reading_list'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('added_reading_list') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
 
-                                    <div class="">
-                                        <label for="example-text-input" class="col-form-label">Most Popular?<sup class="text-danger">*</sup></label>
-                                        {!! Form::select('is_most_popular', $yesNoStatus,$product->is_most_popular, ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}
+                                    {{--<div class="">--}}
+                                        {{--<label for="example-text-input" class="col-form-label">Most Popular?<sup class="text-danger">*</sup></label>--}}
+                                        {{--{!! Form::select('is_most_popular', $yesNoStatus,$product->is_most_popular, ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}--}}
 
-                                        @if ($errors->has('is_most_popular'))
-                                            <span class="help-block">
-                                                <strong class="text-danger">{{ $errors->first('is_most_popular') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
+                                        {{--@if ($errors->has('is_most_popular'))--}}
+                                            {{--<span class="help-block">--}}
+                                                {{--<strong class="text-danger">{{ $errors->first('is_most_popular') }}</strong>--}}
+                                            {{--</span>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
 
                                     {{--<div class="">--}}
                                         {{--<label for="example-text-input" class="col-form-label">Top Rated?<sup class="text-danger">*</sup></label>--}}

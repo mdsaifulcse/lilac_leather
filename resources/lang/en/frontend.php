@@ -37,7 +37,7 @@ return [
     'Review'=>'Review',
     'Shipping Method'=>'Shipping Method',
     'Specification'=>'Specification',
-    'Summary'=>'Summary',
+    'Description'=>'Description',
     'SHARE THIS'=>'SHARE THIS',
     'Share with qrcode'=>'Share with QR code',
     'Stock'=>'Stock',
