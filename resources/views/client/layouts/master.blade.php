@@ -42,6 +42,7 @@
 <div class="so-pre-loader no-pre-loader"><div class="so-loader-line" id="line-load"></div></div>
 @include('client.layouts.partials.header')
 @yield('content')
+
  @include('client.layouts.partials.footer')
     <div class="back-to-top"><i class="fa fa-angle-up"></i></div>
 </div>

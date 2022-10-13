@@ -33,8 +33,7 @@
 
                                         <div class="megamenu-pattern">
                                             <div class="container">
-                                                <ul class="megamenu"
-                                                    data-transition="slide" data-animationtime="300">
+                                                <ul class="megamenu" data-transition="slide" data-animationtime="300">
                                                     @forelse($menus as $key=>$menu)
                                                         <?php
                                                         $dropDownIcon='';

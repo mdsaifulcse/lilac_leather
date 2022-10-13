@@ -17,6 +17,9 @@
         .category-image{
             padding-bottom: 12px;
         }
+        .category-image +p{
+            color:#6b137b;
+        }
     </style>
 @endsection
 @section('content')

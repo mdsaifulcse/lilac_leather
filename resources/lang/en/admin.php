@@ -1,10 +1,13 @@
 <?php
 
 return [
-    'Book Title'=>'Book Title',
-    'Book Title Bn'=>'বইয়ের শিরোনাম',
+    'Product Title'=>'Book Title',
+    'Product Title Bn'=>'বইয়ের শিরোনাম',
     'Category Name'=>'Category',
     'Category Name Bn'=>'বিভাগ/শ্রেণী',
+    'Sub Category Name'=>'Sub Category Name',
+    'Specification'=>'Specification',
+    'Third Sub-Category'=>'Third Sub-Category',
     'Summery'=>'Summery',
 ];
 
