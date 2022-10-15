@@ -1,9 +1,9 @@
 <div id="so-groups" class="right so-groups-sticky hidden-xs" style="top: 196px">
+    <a class="sticky-mycart" data-target="popup" data-popup="#popup-language"><span>Language</span><i class="fa fa-language"></i></a>
     <a class="sticky-categories" data-target="popup" data-popup="#popup-categories"><span>Categories</span><i class="fa fa-align-justify"></i></a>
-    <a class="sticky-mycart" data-target="popup" data-popup="#popup-mycart"><span>Cart</span><i class="fa fa-shopping-cart"></i></a>
-    <a class="sticky-myaccount" data-target="popup" data-popup="#popup-myaccount"><span>Account</span><i class="fa fa-user"></i></a>
-    <a class="sticky-mysearch" data-target="popup" data-popup="#popup-mysearch"><span>Search</span><i class="fa fa-search"></i></a>
-    <a class="sticky-recent" data-target="popup" data-popup="#popup-recent"><span>Recent View</span><i class="fa fa-recent"></i></a>
+    {{--<a class="sticky-myaccount" data-target="popup" data-popup="#popup-myaccount"><span>Account</span><i class="fa fa-user"></i></a>--}}
+    {{--<a class="sticky-mysearch" data-target="popup" data-popup="#popup-mysearch"><span>Search</span><i class="fa fa-search"></i></a>--}}
+    {{--<a class="sticky-recent" data-target="popup" data-popup="#popup-recent"><span>Recent View</span><i class="fa fa-recent"></i></a>--}}
 
     <div class="popup popup-categories popup-hidden" id="popup-categories">
         <div class="popup-screen">
@@ -26,12 +26,12 @@
                                     </span>
                                     @endif
 
-                                    <a href="{{url('/book/category/'.$category->id.'?ref'.$category->category_name)}}"><i class="fa fa-chevron-down nav-arrow"></i>{{$category->category_name_bn}}</a>
+                                    <a href="{{url('/product/category/'.$category->id.'?ref'.$category->category_name."&itemNo=$key")}}"><i class="fa fa-chevron-down nav-arrow"></i>{{$category->category_name_bn}}</a>
 
                                     <ul class="level-2">
                                         @forelse($category->subCatAsSubMenu as $subMenuData)
                                         <li>
-                                            <a href="{{url('/book/category/'.$category->id.'?sub_cat='.$subMenuData->link)}}"><i class="fa fa-chevron-right flip nav-arrow"></i>{{$subMenuData->sub_category_name_bn}}</a>
+                                            <a href="{{url('/product/category/'.$category->id.'?sub_cat='.$subMenuData->link."&itemNo=$key")}}"><i class="fa fa-chevron-right flip nav-arrow"></i>{{$subMenuData->sub_category_name_bn}}</a>
                                         </li>
                                         @empty
                                         @endforelse
@@ -50,21 +50,25 @@
         </div>
     </div>
 
-    <div class="popup popup-mycart popup-hidden" id="popup-mycart">
+    <div class="popup popup-language popup-hidden" id="popup-language">
         <div class="popup-screen">
             <div class="popup-position">
                 <div class="popup-container popup-small">
                     <div class="popup-html">
                         <div class="popup-header">
-                            <span><i class="fa fa-shopping-cart"></i>Shopping Cart</span>
-                            <a class="popup-close" data-target="popup-close" data-popup-close="#popup-mycart">&times;</a>
+                            <span><i class="fa fa-language"></i>Select Language</span>
+                            <a class="popup-close" data-target="popup-close" data-popup-close="#popup-language">&times;</a>
                         </div>
                         <div class="popup-content">
-                            <div class="cart-header">
-                                <div class="notification gray">
-                                    <i class="fa fa-shopping-cart info-icon"></i>
-                                    <p>Your shopping cart is empty!</p>
-                                </div>
+                            <div class="nav-secondary">
+                                <ul>
+                                    <li>
+
+                                        <a href="{{url('/localization/en')}}"><i class="fa fa-chevron-down nav-arrow"></i>English</a>
+                                        <a href="{{url('/localization/it')}}"><i class="fa fa-chevron-down nav-arrow"></i>Italian</a>
+
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

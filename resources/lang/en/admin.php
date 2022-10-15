@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'Product Title'=>'Book Title',
-    'Product Title Bn'=>'বইয়ের শিরোনাম',
+    'Product Title'=>'Product Title',
+    'Product Title Bn'=>'Product শিরোনাম',
     'Category Name'=>'Category',
     'Category Name Bn'=>'বিভাগ/শ্রেণী',
     'Sub Category Name'=>'Sub Category Name',

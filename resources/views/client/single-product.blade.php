@@ -40,9 +40,9 @@
             </div>
             <ul class="breadcrumb">
                 <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i></a></li>
-                <li><a href="{{URL::to('/products/category/'.$product->categoryProducts->link)}}">{{$product->categoryProducts->category_name}}</a></li>
+                <li><a href="{{URL::to('/product/category/'.$product->categoryProducts->id."?itemNo=$request->itemNo")}}">{{$product->categoryProducts->category_name}}</a></li>
                 @if(!empty($product->subCategoryProducts))
-                    <li><a href="{{URL::to('/products/category/'.$product->categoryProducts->link.'?&sub_cat='.$product->subCategoryProducts->link)}}">{{$product->subCategoryProducts->sub_category_name}}</a>
+                    <li><a href="{{URL::to('/product/category/'.$product->categoryProducts->id.'?sub_cat='.$product->subCategoryProducts->link."&itemNo=$request->itemNo")}}">{{$product->subCategoryProducts->sub_category_name}}</a>
                     </li>
                 @endif
                 @if(!empty($product->thirdCategoryProducts))
@@ -52,7 +52,7 @@
                         $subCatLink=$product->subCategoryProducts->link;
                     }
                     ;?>
-                    <li><a href="{{URL::to('/products/category/'.$product->categoryProducts->link.'?&sub_cat='.$subCatLink.'&third_sub_cat='.$product->thirdCategoryProducts->link)}}">{{$product->thirdCategoryProducts->third_sub_category}}</a></li>
+                    <li><a href="{{URL::to('/product/category/'.$product->categoryProducts->id.'?sub_cat='.$subCatLink.'&third_sub_cat='.$product->thirdCategoryProducts->link."&itemNo=$request->itemNo")}}">{{$product->thirdCategoryProducts->third_sub_category}}</a></li>
                 @endif
             </ul>
         </div>
@@ -106,14 +106,6 @@
                                 </a>
                                 {{--<span class="order-num">Orders (20)</span>--}}
                             </div>
-                            <div>
-                                <p> By:
-                                    @forelse($product->relProductAuthorsName as $author)
-                                        <a href="{{URL::to('/book/author/'.$author->id)}}" class="text-primary">{{$author->name.', '}}</a>
-                                    @empty
-                                    @endif
-                                </p>
-                            </div>
                             <div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="">
                                 <?php
                                 $discountPercent=0;
@@ -126,26 +118,26 @@
                                 }
                                 ?>
                                 @if($promotionSalePrice>0)
-                                    <span class="price-new"><span itemprop="price" id="price-special">{{$currency}} {{MyHelper::bn_number($promotionSalePrice)}}</span></span>
-                                    <span class="price-old" id="price-old">{{$currency}} {{MyHelper::bn_number($product->productStock->sale_price)}} </span>
+                                    <span class="price-new"><span itemprop="price" id="price-special">{{$currency}} {{$promotionSalePrice}}</span></span>
+                                    <span class="price-old" id="price-old">{{$currency}} {{$product->productStock->sale_price}} </span>
                                 @else
-                                    <span class="price-new"><span itemprop="price" id="price-special">{{$currency}}  {{MyHelper::bn_number($product->productStock->sale_price)}}</span></span>
+                                    <span class="price-new"><span itemprop="price" id="price-special">{{$currency}}  {{$product->productStock->sale_price}}</span></span>
                                 @endif
                                 @if($discountPercent>0)
-                                    <span class="label-product label-sale">-{{MyHelper::bn_number($discountPercent)}}%</span>
+                                    <span class="label-product label-sale">-{{$discountPercent}}%</span>
                                 @endif
                             </div>
                             <div class="product-box-desc">
                                 <div class="inner-box-desc">
                                     <div class="model"><span>{{__('frontend.Product Code')}}: </span> {{$product->sku}}</div>
                                     @if(!empty($product->categoryProducts))
-                                        <div class="brand"><span><strong>{{__('frontend.Category Name Bn')}} </strong></span> <a href="">{{$product->categoryProducts->category_name}}</a></div>
+                                        <div class="brand"><span><strong>{{__('frontend.Category Name')}} </strong></span> <a href="">{{$product->categoryProducts->category_name}}</a></div>
                                     @endif
                                     @if(!empty($product->brandProducts))
-                                        <div class="brand"><span>Brands </span><a href="">{{$product->brandProducts->brand_name}}</a></div>
+                                        <div class="brand"><span>{{__('frontend.Brand')}} </span><a href="">{{$product->brandProducts->brand_name}}</a></div>
                                     @endif
                                     {{--<div class="reward"><span>Reward Points:</span> 100</div>--}}
-                                    <div class="stock"><span> {{__('frontend.Stock')}} </span> <i class="fa fa-check-square-o"></i> In Stock {{$balanceQty=($product->productStock->qty+$product->productStock->sold_return_qty)-($product->productStock->sold_qty+$product->productStock->purchase_return_qty)}}
+                                    <div class="stock"><span> {{__('frontend.Stock')}} </span> <i class="fa fa-check-square-o"></i>{{__('frontend.In Stock')}}  {{$balanceQty=($product->productStock->qty+$product->productStock->sold_return_qty)-($product->productStock->sold_qty+$product->productStock->purchase_return_qty)}}
                                     </div>
                                 </div>
                                 {{--<a class="image-popup-sizechart" href="{{asset('/client')}}/images/catalog/404/size-chart.jpg">Size Chart </a>--}}
@@ -215,7 +207,7 @@
                                             <ul class="social-media custom-social-share">
                                                 <li>
                                                     <button type="button" >
-                                                        {!! QrCode::size(100)->generate(url('book/details/'.$product->id)); !!}</button>
+                                                        {!! QrCode::size(100)->generate(url('product/details/'.$product->id)); !!}</button>
                                                 </li>
 
                                             </ul>
@@ -282,7 +274,7 @@
                         <div class="content-product-midde clearfix">
                             <div class="producttab ">
                                 <div class="tabsslider vertical-tabs  vertical-tabs  col-xs-12">
-                                    <h4>{{__('admin.Product Specification & Summary')}}</h4>
+                                    <h4>{{__('frontend.Product Specification & Summary')}}</h4>
                                     <ul class="nav nav-tabs col-lg-12 col-sm-4">
                                         <li class="active"><a data-toggle="tab" href="#tab-specification">{{__('frontend.Specification')}} </a></li>
                                         <li><a data-toggle="tab" href="#tab-description">{{__('frontend.Description')}} </a></li>

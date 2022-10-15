@@ -42,6 +42,7 @@ class SearchProductController extends Controller
 
         if (!empty($request->sub_cat)) // filter sub category products ----------
         {
+
             $subCategory=$this->checkSubCategory($request->sub_cat);
 
             if (empty($subCategory))

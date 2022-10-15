@@ -5,7 +5,7 @@
             <li class="so-filter-options" data-option="Subcategory">
                 <div class="so-filter-heading">
                     <div class="so-filter-heading-text">
-                        <span>{{__('frontend.Category Name Bn')}}</span>
+                        <span>{{__('frontend.Category Name')}}</span>
                     </div>
                     {{--<i class="fa fa-chevron-down"></i>--}}
                 </div>
@@ -17,22 +17,22 @@
                                 @forelse($categories as $category)
                                     @if($category->products->count()>0)
                                         <p>
-                                            <a href="{{URL::to('/product/category/'.$category->id.'?ref='.$category->category_name)}}" class="@if(Request::segment(3)==$category->id)active @endif">
-                                                <span><i class="fa fa-angle-double-right "></i></span> {{$category->category_name_bn}} ({{$category->products->count()}})
+                                            <a href="{{URL::to('/product/category/'.$category->id.'?ref='.$category->category_name."&itemNo=$request->itemNo")}}" class="@if(Request::segment(3)==$category->id)active @endif">
+                                                <span><i class="fa fa-angle-double-right "></i></span> {{$category->category_name}} ({{$category->products->count()}})
                                             </a>
                                         </p>
                                         @forelse($category->subCatAsSubMenu as $subCate)
                                             @if($subCate->products->count()>0)
                                                 <div class="so-filter-option-sub-sub">
                                                     <label>
-                                                        <a href="{{URL::to('/product/category/'.$category->link.'?sub_cat='.$subCate->link.'&brand=')}}" class="@if($request->sub_cat==$subCate->link)active @endif">> {{$subCate->sub_category_name}}({{$subCate->products->count()}})
+                                                        <a href="{{URL::to('/product/category/'.$category->id.'?sub_cat='.$subCate->link.'&brand='."&itemNo=$request->itemNo")}}" class="@if($request->sub_cat==$subCate->link)active @endif">> {{$subCate->sub_category_name}}({{$subCate->products->count()}})
                                                         </a>
                                                     </label>
                                                     @forelse($subCate->thirdSubAsThirdSubMenu as $thirdSub)
                                                         @if($thirdSub->products->count()>0)
                                                             <div class="so-filter-option-sub-sub-sub">
                                                                 <label>
-                                                                    <a href="{{URL::to('/product/category/'.$category->link.'?sub_cat='.$subCate->link.'&third_sub_cat='.$thirdSub->link.'&brand=')}}" class="@if($request->third_sub_cat==$thirdSub->link) active @endif">{{$thirdSub->third_sub_category}}({{$thirdSub->products->count()}})
+                                                                    <a href="{{URL::to('/product/category/'.$category->id.'?sub_cat='.$subCate->link.'&third_sub_cat='.$thirdSub->link.'&brand='."&itemNo=$request->itemNo")}}" class="@if($request->third_sub_cat==$thirdSub->link) active @endif">{{$thirdSub->third_sub_category}}({{$thirdSub->products->count()}})
                                                                     </a>
                                                                 </label>
                                                             </div>

@@ -82,7 +82,7 @@ class DataLoadController
 
     public function categoryList()
     {
-       return Category::orderBy('serial_num','ASC')->where('status',Category::ACTIVE)->pluck('category_name_bn','id');
+       return Category::orderBy('serial_num','ASC')->where('status',Category::ACTIVE)->pluck('category_name','id');
     }
 
     public function subCatList($categoryId=null)

@@ -15,10 +15,19 @@
         .card-horizontal .card-body a{font-size:14px;display:block;padding:1px;}
         .card-horizontal .card-body a:first-child{color: black;font-weight: 500;padding-bottom: 6px;}
         .category-image{
-            padding-bottom: 12px;
+            border-radius:50px;
         }
         .category-image +p{
             color:#6b137b;
+            padding: 15px 10px;
+        }
+        .item-inner >img{
+            border-radius:50px;
+        }
+        .item-inner:hover img{
+            transition: 1s;
+            transform: scale(1.5);
+            border: 1px solid #280c2d;
         }
     </style>
 @endsection
@@ -105,9 +114,9 @@
                                         <ul>
                                             @forelse($category->subCategoryData as $subCategory)
                                                 <li class="item-1">
-                                                    <a href="{{URL::to("product/category/$category->id?sub_cat=$subCategory->link&itemNo=$key")}}" class="item-inner">
+                                                    <a href="{{URL::to("product/category/$category->id?sub_cat=$subCategory->link&itemNo=$key")}}" class="item-inner" title="{{$subCategory->sub_category_name}}">
                                                         {{--<i class="fa fa-book fa-2x"></i>--}}
-                                                        <img src="{{asset($subCategory->icon_photo?$subCategory->icon_photo:'images/default/default.png')}}" class="img-responsive center-block" width="50px">
+                                                        <img src="{{asset($subCategory->icon_photo?$subCategory->icon_photo:'images/default/default.png')}}" title="{{$subCategory->sub_category_name}}" class="img-responsive center-block" width="50px">
                                                         <div class="content">
 
                                                             <strong> {{$subCategory->sub_category_name}} </strong>

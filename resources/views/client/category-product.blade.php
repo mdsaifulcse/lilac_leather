@@ -1,6 +1,6 @@
 @extends('client.layouts.master')
 @section('head')
-    <title> {{$categoryData->category_name}} Products </title>
+    <title> {{$categoryData->category_name}} {{__('frontend.Product')}} </title>
     <meta name="description" content="" /><meta name="keywords" content=" " />
 @endsection
 @section('style')
@@ -14,13 +14,13 @@
     <div class="breadcrumbs ">
         <div class="container">
             <div class="current-name">
-                {{$categoryData->category_name}}-{{$categoryData->category_name_bn}}
+                {{$categoryData->category_name}}
             </div>
 
             <ul class="breadcrumb">
                 <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i></a></li>
                 <li><a href="javascript:void(0)">{{__('frontend.Product')}}</a></li>
-                <li><a href="{{URL::to("/product/categories?itemNo=$request->itemNo")}}">{{__('frontend.Category Name Bn')}}</a></li>
+                <li><a href="{{URL::to("/product/categories?itemNo=$request->itemNo")}}">{{__('frontend.Category Name')}}</a></li>
                 <li><a href="javascript:void(0)">{{__('frontend.item'.$request->itemNo)}}</a></li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
             <div id="content" class="col-md-9 col-sm-12 col-xs-12 fluid-sidebar">
                 <!-- So Groups -->
                 <div class="products-category clearfix">
-                    <h3 class="title-category ">{{$categoryData->category_name}}-{{$categoryData->category_name_bn}}</h3>
+                    <h3 class="title-category ">{{$categoryData->category_name}}</h3>
                     <div class="product-filter product-filter-top filters-panel">
                         <div class="row">
                             <div class="col-md-4 col-sm-5 view-mode">
@@ -84,7 +84,7 @@
                                         @endforelse
                                     </div>
                                     <div class="product-image-container">
-                                        <a href="{{url('/book/details/'.$product->id."/$product->name")}}" title="{{$product->name}}">
+                                        <a href="{{url('/product/details/'.$product->id."/$product->name?itemNo=$request->itemNo")}}" title="{{$product->name}}">
 
                                             <img src="{{asset($product->productImages[0]->medium)}}" alt="{{$product->name}}" title="{{$product->name}}" class="img-responsive" id="product-image-{{$key}}" />
                                         </a>
@@ -114,7 +114,7 @@
                                             <input class="form-control" type="hidden" name="qty" value="1">
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
 
-                                        <button class="addToCart" type="submit" title="Add to Cart"><span>Add to Cart</span></button>
+                                        <button class="addToCart" type="submit" title="{{__('frontend.Add to Cart')}}"><span>{{__('frontend.Add to Cart')}}</span></button>
 
                                         <button class="wishlist btn-button" type="button" title="Add to Wish List - {{$product->name}}"
                                                 onclick='event.preventDefault();document.getElementById("wishListForm{{$product->id}}").submit();'>
@@ -150,11 +150,11 @@
                                                         <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
                                                     @endfor
                                                 </div>
-                                                <a class="rating-num"  href="{{url('/book/details/'.$product->id."/$product->name")}}" rel="nofollow" target="_blank" >({{$averageReview}})</a>
+                                                <a class="rating-num"  href="{{url('/product/details/'.$product->id."/$product->name?itemNo=$request->itemNo")}}" rel="nofollow" target="_blank" >({{$averageReview}})</a>
                                             </div>
                                         </div>
                                         <h4>
-                                            <a href="{{url('/book/details/'.$product->id."/$product->name")}}">
+                                            <a href="{{url('/product/details/'.$product->id."/$product->name?itemNo=$request->itemNo")}}">
                                                 {{substr($product->name,0,50)}}
                                             </a>
                                         </h4>

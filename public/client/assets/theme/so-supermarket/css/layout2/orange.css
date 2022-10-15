@@ -8150,14 +8150,14 @@ footer a:hover {
 .block-policy1 {
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 3px;
-  padding: 24px 0 18px 0;
-  margin: 20px 0 40px 0;
+  padding: 20px 0 18px 0;
+  /*margin: 20px 0 40px 0;*/
   display: inline-block;
   background-color: rgba(225, 255, 242, 0);
   width: 100%; }
 .block-policy1 ul li {
   float: left;
-  padding: 0 15px;
+  padding: 15px 15px;
   text-align: center;
   width: 25%;
   position: relative; }

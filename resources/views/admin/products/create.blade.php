@@ -62,7 +62,7 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <label for="name" class="col-form-label">{{__('admin.Product Title')}}<sup class="text-danger">*</sup></label>
-                                            {!! Form::text('name', $value=old('name'), array('placeholder' => __('Book Title'),'class' => 'form-control','required'=>false)) !!}
+                                            {!! Form::text('name', $value=old('name'), array('placeholder' => __('admin.Product Title'),'class' => 'form-control','required'=>true)) !!}
 
                                             @if ($errors->has('name'))
                                                 <span class="help-block"><strong class="text-danger">{{ $errors->first('name') }}</strong></span>

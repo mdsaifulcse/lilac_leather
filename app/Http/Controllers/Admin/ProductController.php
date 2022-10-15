@@ -209,7 +209,7 @@ class ProductController extends Controller
     public function productPromotion($request,$productId,$update=false)
     {
         $dateStart=Carbon::now()->format('Y-m-d');
-        if (@empty($request->date_start))
+        if (!empty($request->date_start))
         {
             $dateStart=date('Y-m-d',strtotime($request->date_start));
         }
@@ -526,7 +526,7 @@ class ProductController extends Controller
                 'origin_id'=>'nullable|exists:origins,id',
                 'pack_size_unit_id'=>'nullable|exists:pack_size_units,id',
                 'category_id'=>'required|exists:categories,id',
-                'sub_cat_id'=>'required|exists:sub_categories,id',
+                'subcategory_id'=>'required|exists:sub_categories,id',
                 'third_category_id'=>'nullable|exists:third_sub_categories,id',
                 'fourth_category_id'=>'nullable|exists:fourth_sub_categories,id',
                 'brand_id'=>'nullable|exists:brands,id',
