@@ -11,13 +11,13 @@
 <!-- begin:: Content Head -->
 
 @section('subheader')
-   All Book List
+    All Product List
 @endsection
 
 @section('subheader-action')
     @can('product-create')
         <a href="{{ route('products.create') }}" class="btn btn-success pull-right" title="Click to create new product">
-            <i class="la la-plus"></i> Create New Book
+            <i class="la la-plus"></i> Create New Product
         </a>
     @endcan
 @endsection

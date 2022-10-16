@@ -17,7 +17,7 @@
 @section('subheader-action')
     @can('product-list')
         <a href="{{ route('products.index') }}" class="btn btn-success pull-right" title="Click to go back product list">
-            <i class="la la-angle-double-left"></i> Book list
+            <i class="la la-angle-double-left"></i> Product list
         </a>
     @endcan
 @endsection
