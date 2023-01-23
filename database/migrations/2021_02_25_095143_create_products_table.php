@@ -43,7 +43,7 @@ class CreateProductsTable extends Migration
             $table->string('is_most_popular')->default(\App\Models\Product::NO);
             $table->string('is_top_rated')->default(\App\Models\Product::NO);
             $table->string('show_home')->default(\App\Models\Product::NO);
-            $table->string('gender')->nullable();
+            $table->string('gender',20)->nullable();
 
             $table->foreignId('publisher_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('language_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
