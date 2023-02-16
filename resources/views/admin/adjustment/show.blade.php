@@ -93,10 +93,10 @@
                             <table id="productList" class="table table-bordered table-hover" style="width:100%;">
                                 <thead>
                                 <tr>
-                                    <th class="text-left name">Product Name</th>
+                                    <th class="text-center name">Product Name</th>
                                     <th class="text-center quantity">Qty</th>
                                     <th class="text-center price">Unit Price</th>
-                                    <td class="text-left">Item Total</td>
+                                    <td class="text-center">Item Total</td>
                                 </tr>
                                 </thead>
 
@@ -110,7 +110,7 @@
 
                                 @forelse($adjustment->adjustmentItem as $key=>$product)
 
-                                    <tr>
+                                    <tr class="text-center">
                                         <td>{{$product->product->name}}</td>
                                         <td>{{$product->qty}}</td>
                                         <td>{{$product->price}}</td>
@@ -155,7 +155,7 @@
                                     <tr>
                                         <td class="text-right"><strong>Net Total :</strong></td>
 
-                                        <td class="text-left">{{$currency}} {{$adjustment->net_total}}></td>
+                                        <td class="text-left">{{$currency}} {{$adjustment->net_total}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

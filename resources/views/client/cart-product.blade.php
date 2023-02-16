@@ -74,7 +74,7 @@
 
                                 {!! Form::close() !!}
                             </td>
-                            <td class="text-right">{{$currency}} {{$cartProduct->price}}</td>
+                            <td class="text-right">{{$currency}} {{round($cartProduct->price)}}</td>
 
                             <?php $itemAmount=$cartProduct->qty*$cartProduct->price?>
 

@@ -55,7 +55,7 @@ class CartProductController extends Controller
         try{
             $validator = Validator::make($request->all(), [
                 'product_id' => 'required|exists:products,id',
-                'qty' => 'required|min:1:max:1000',
+                'qty' => 'required|min:1|max:1000',
             ]);
             if ($validator->fails())
             {

@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/localization/{locale}', 'App\Http\Controllers\VisitorTrackController@localizationChange');
 
+//Route::get('/login',function (){
+//    return redirect('/login/admin');
+//});
+
 Route::get('/login/admin', 'App\Http\Controllers\LoginController@showAdminLoginForm');
 Route::get('/login/staff', 'App\Http\Controllers\LoginController@showStaffLoginForm');
 

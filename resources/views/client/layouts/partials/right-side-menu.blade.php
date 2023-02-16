@@ -26,12 +26,12 @@
                                     </span>
                                     @endif
 
-                                    <a href="{{url('/product/category/'.$category->id.'?ref'.$category->category_name."&itemNo=$key")}}"><i class="fa fa-chevron-down nav-arrow"></i>{{$category->category_name_bn}}</a>
+                                    <a href="{{url('/product/category/'.$category->id.'?ref'.$category->category_name."&itemNo=$key")}}"><i class="fa fa-chevron-down nav-arrow"></i>{{$category->category_name}}</a>
 
                                     <ul class="level-2">
                                         @forelse($category->subCatAsSubMenu as $subMenuData)
                                         <li>
-                                            <a href="{{url('/product/category/'.$category->id.'?sub_cat='.$subMenuData->link."&itemNo=$key")}}"><i class="fa fa-chevron-right flip nav-arrow"></i>{{$subMenuData->sub_category_name_bn}}</a>
+                                            <a href="{{url('/product/category/'.$category->id.'?sub_cat='.$subMenuData->link."&itemNo=$key")}}"><i class="fa fa-chevron-right flip nav-arrow"></i>{{$subMenuData->sub_category_name}}</a>
                                         </li>
                                         @empty
                                         @endforelse

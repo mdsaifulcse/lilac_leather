@@ -46,6 +46,11 @@ class JetstreamServiceProvider extends ServiceProvider
             }
         });
 
+        Fortify::loginView(function () {
+            return redirect('login/admin');
+//            $company=\App\Models\Setting::first()->value('company_name');
+//            return view('auth.metroniclogin', ['url' => '/admin','company'=>$company]);
+        });
 
         $this->configurePermissions();
 

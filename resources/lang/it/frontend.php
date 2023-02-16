@@ -11,7 +11,7 @@ return [
     'Purchase & Earn'=>'Acquisti e guadagni',
     'Search'=>'ricerca',
     'Search here'=>'Cerca qui',
-    'All Departments'=>'Tutte le sezioni',
+    'All Departments'=>'Categoria',
     'Login'=>'Login',
     'Register'=>'Registrati',
     'View All'=>'vedi tutto',

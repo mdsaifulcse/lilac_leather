@@ -94,6 +94,11 @@ class PermissionSeeder extends Seeder
             'account-setting',
             'common-public',
             'common-private',
+            'order-list',
+            'order-edit',
+            'order-create',
+            'order-delete',
+            'order-delete',
 
         ];
 

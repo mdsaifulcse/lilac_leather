@@ -11,7 +11,7 @@ return [
     'Purchase & Earn'=>'Purchases and Earnings',
     'Search'=>'Search',
     'Search here'=>'Search here',
-    'All Departments'=>'Departments',
+    'All Departments'=>'Category',
     'Login'=>'Login',
     'Register'=>'Register',
     'View All'=>'View All',

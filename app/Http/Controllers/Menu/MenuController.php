@@ -74,12 +74,12 @@ class MenuController extends Controller
             if (isset($request->menu_as) && $request->menu_as=='Category'){
 
                 $category=Category::findOrFail($request->category_id);
-                $input['url']="/book/category/$category->id".'?ref='.$category->category_name;
+                $input['url']="/product/category/$category->id".'?ref='.$category->category_name;
 
             }elseif (isset($request->menu_as) && $request->menu_as=='Author'){
 
                 $author=Author::select('id','name','link')->findOrFail($request->author_id);
-                $input['url']="/book/author/$author->id".'?ref='.$author->name;
+                $input['url']="/product/author/$author->id".'?ref='.$author->name;
             }
 
             $validator = Validator::make($input, [
@@ -155,12 +155,12 @@ class MenuController extends Controller
         if (isset($request->menu_as) && $request->menu_as=='Category'){
 
             $category=Category::findOrFail($request->category_id);
-            $input['url']="/book/category/$category->id".'?ref='.$category->category_name;
+            $input['url']="/product/category/$category->id".'?ref='.$category->category_name;
 
         }elseif (isset($request->menu_as) && $request->menu_as=='Author'){
 
             $author=Author::select('id','name','link')->findOrFail($request->author_id);
-            $input['url']="/book/author/$author->id".'?ref='.$author->name;
+            $input['url']="/product/author/$author->id".'?ref='.$author->name;
         }
 
         $validator = Validator::make($input, [

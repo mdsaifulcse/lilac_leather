@@ -271,7 +271,8 @@ class AdjustMentController extends Controller
 
     public function inventoryStockUpdate($tmpProduct,$adjustmentType)
     {
-        $productInventoryStock=ProductInventoryStock::where(['product_id'=>$tmpProduct->product_id,'updated_by'=>auth()->user()->id])->first();
+
+        $productInventoryStock=ProductInventoryStock::where(['product_id'=>$tmpProduct->product_id])->first(); // ,'updated_by'=>auth()->user()->id
 
         if ($adjustmentType==AdjustMent::IN)
         {

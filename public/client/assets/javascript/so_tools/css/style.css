@@ -2,7 +2,7 @@
 	position: fixed;
 	right: 0;
 	z-index: 999;
-	background: #02a556;
+	background: #280c2d;
 	width: 50px;
 }
 .rtl .so-groups-sticky.right {
@@ -33,7 +33,7 @@
     position: relative;
 }
 #so-groups > a:hover {
-    background-color: #ffd800;
+    background-color: #280c2d;
 }
 #so-groups > a > i {font-size: 20px;}
 #so-groups i.fa-recent {
@@ -43,7 +43,7 @@
     display: inline-block;
 }
 #so-groups > a span {
-  background-color: #f60;
+  background-color: #280c2d;
   color: #fff;
   display: inline-block;
   font-size: 14px;

@@ -47,23 +47,36 @@
                                                                 <b class="{{$dropDownIcon}}" ></b>
                                                             </a>
                                                             @if($subMenu>0)
-                                                                <div class="sub-menu" style="width:720px">
+                                                                <div class="sub-menu" style="width:320px">
 
                                                                     <div class="content">
                                                                         <div class="row">
-                                                                            @foreach($menu->activeClientSubMenu->chunk(10) as $subMenuData)
-                                                                                <div class="col-sm-4">
+                                                                            <div class="col-sm-12">
+                                                                            @foreach($menu->activeClientSubMenu as $subMenuData)
+
                                                                                     <ul class="subcategory ">
-                                                                                        @foreach($subMenuData as $key=>$sData)
-                                                                                            <li>
-                                                                                                <a href="{{url($sData->url)}}" class="title-submenu ">
-                                                                                                    {{$sData->name_bn}}
-                                                                                                </a>
-                                                                                            </li>
-                                                                                        @endforeach
+                                                                                        <li>
+                                                                                            <a href="{{url($subMenuData->url)}}" class="title-submenu ">
+                                                                                                {{$subMenuData->name_bn}}
+                                                                                            </a>
+                                                                                        </li>
                                                                                     </ul>
-                                                                                </div><!-- end col-4 submenu -->
+
                                                                             @endforeach
+                                                                            </div><!-- end col-4 submenu -->
+                                                                            {{--@foreach($menu->activeClientSubMenu->chunk(10) as $subMenuData)--}}
+                                                                                {{--<div class="col-sm-4">--}}
+                                                                                    {{--<ul class="subcategory ">--}}
+                                                                                        {{--@foreach($subMenuData as $key=>$sData)--}}
+                                                                                            {{--<li>--}}
+                                                                                                {{--<a href="{{url($sData->url)}}" class="title-submenu ">--}}
+                                                                                                    {{--{{$sData->name_bn}}--}}
+                                                                                                {{--</a>--}}
+                                                                                            {{--</li>--}}
+                                                                                        {{--@endforeach--}}
+                                                                                    {{--</ul>--}}
+                                                                                {{--</div><!-- end col-4 submenu -->--}}
+                                                                            {{--@endforeach--}}
                                                                         </div> <!-- end row -->
                                                                         <div class="border"></div>
                                                                         <!--another row-->
@@ -127,23 +140,36 @@
                                                         <p class='close-menu'></p>
                                                         <a href="{{URL::to($menu->url)}}" class="clearfix" ><strong> {{$menu->name_bn}} </strong><b class="{{$dropDownIcon}}"></b></a>
                                                         @if($subMenu>0)
-                                                            <div class="sub-menu" style="width:100%;">
+                                                            <div class="sub-menu" style="width: 300px;">
                                                                 <div class="content">
                                                                     <div class="row">
                                                                         <div class="col-sm-12">
                                                                             <div class="categories ">
                                                                                 <div class="row">
-                                                                                    @foreach($menu->activeClientSubMenu->chunk(14) as $subMenuInfo)
-                                                                                        <div class="col-sm-3 col-md-3 static-menu">
+                                                                                    <div class="col-sm-12 col-md-12 static-menu">
+                                                                                        @foreach($menu->activeClientSubMenu as $subMenuInfo)
+
                                                                                             <div class="menu">
                                                                                                 <ul>
-                                                                                                    @foreach($subMenuInfo as $key=>$subMenu)
-                                                                                                        <li> <a href="{{URL::to($subMenu->url)}}" class="">{{$subMenu->name_bn}}</a></li>
-                                                                                                    @endforeach
+
+                                                                                                    <li> <a href="{{URL::to($subMenuInfo->url)}}" class="">{{$subMenuInfo->name}}</a></li>
+
                                                                                                 </ul>
                                                                                             </div>
-                                                                                        </div>
-                                                                                    @endforeach
+
+                                                                                        @endforeach
+                                                                                    </div>
+                                                                                    {{--@foreach($menu->activeClientSubMenu->chunk(14) as $subMenuInfo)--}}
+                                                                                        {{--<div class="col-sm-3 col-md-3 static-menu">--}}
+                                                                                            {{--<div class="menu">--}}
+                                                                                                {{--<ul>--}}
+                                                                                                    {{--@foreach($subMenuInfo as $key=>$subMenu)--}}
+                                                                                                        {{--<li> <a href="{{URL::to($subMenu->url)}}" class="">{{$subMenu->name_bn}}</a></li>--}}
+                                                                                                    {{--@endforeach--}}
+                                                                                                {{--</ul>--}}
+                                                                                            {{--</div>--}}
+                                                                                        {{--</div>--}}
+                                                                                    {{--@endforeach--}}
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -283,7 +309,7 @@
                 <div class="navbar-logo col-lg-2 col-md-3 col-sm-12 col-xs-12">
                     <div class="logo">
                         <a href="{{URL::to('/')}}">
-                            <img class="lazyload"  src="{{asset($setting->logo)}}" data-src="{{asset($setting->logo)}}" title="{{$setting->company_name}} " alt="{{$setting->company_name}}" style="width: 150px;margin-top: 0px" /></a>
+                            <img class="lazyload"  src="{{asset($setting->logo)}}" data-src="{{asset($setting->logo)}}" title="{{$setting->company_name}} " alt="{{$setting->company_name}}" style="width: 50px;margin-top: 0px" /></a>
                     </div>
                 </div>
 
@@ -300,7 +326,7 @@
                                         <select class="no-border" name="category_id">
                                             <option value="">{{__('frontend.All Departments')}} </option>
                                             @forelse($categories as $key=>$categoryData)
-                                                <option value="{{$categoryData->id}}">{{$categoryData->category_name_bn}} </option>
+                                                <option value="{{$categoryData->id}}">{{$categoryData->category_name}} </option>
                                                 @empty
                                             @endforelse
                                         </select>

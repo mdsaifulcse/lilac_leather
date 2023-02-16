@@ -5,33 +5,34 @@
         <div class="so-page-builder">
             <div class="container page-builder-ltr">
                 <div class="row row_p2b9  footer-middle ">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 col_4202  col-style">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col_4202  col-style">
                         <div class="infos-footer">
-                            <a href="layout2.html#">
-                                <img src="{{asset($setting->logo)}}"  data-src="{{asset($setting->logo)}}" title="{{$setting->company_name}} " alt="{{$setting->company_name}}" style="width: 150px;margin-left:15%;"></a>
+                            <a href="{{url('/')}}">
+                                <img src="{{asset($setting->logo)}}"  data-src="{{asset($setting->logo)}}" title="{{$setting->company_name}} " alt="{{$setting->company_name}}"
+                                     style="width: 150px;margin-left:10%;border-radius:50%;"></a>
                             <ul>
                                 <li class="adres">
-                                    <?php echo nl2br($setting->address1);?>
+                                   Address: <?php echo nl2br($setting->address1);?>
                                 </li>
                                 <li class="phone">
-                                    {{$setting->mobile_no1}}
+                                   Mobile: {{$setting->mobile_no1}}
                                 </li>
                                 
                                 <li class="mail">
-                                    {{$setting->email1}}
+                                   Email: {{$setting->email1}}
                                 </li>
                                 <li class="time">
-                                    {{__('frontend.Open time')}}: ২৪/৭
+                                    {{__('frontend.Open time')}}: 24/7
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 col_6urb  col-clear2">
+                    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 col_6urb  col-clear2">
                         <div class="box-information box-footer" style="background-color:#ffffff;">
                             <div class="module clearfix">
 
                                 <div class="modcontent">
-                                    <ul class="menu" style="padding-left:22%;">
+                                    <ul class="menu" style="padding-left:12%;">
                                         {{--@forelse($socials as $social)--}}
                                             {{--<li class="facebook">--}}
                                                 {{--<a href="{{URL::to($social->link)}}" target="_blank">--}}
@@ -40,7 +41,7 @@
                                             {{--</li>--}}
                                         {{--@empty--}}
                                         {{--@endforelse--}}
-                                        {!! QrCode::size(150)->generate(Request::url()); !!}
+                                        {!! QrCode::size(140)->generate(Request::url()); !!}
                                         <p>Scan & Visit Site</p>
                                     </ul>
                                 </div>
@@ -48,7 +49,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 col_6urb  col-clear2">
+                    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12 col_6urb  col-clear2">
                         <div class="box-information box-footer">
                             <div class="module clearfix">
                                 <h3 class="modtitle">{{__('frontend.INFORMATION')}}</h3>
@@ -64,7 +65,7 @@
                     </div>
 
 
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 col_kbk9  col-newsl">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col_kbk9  col-newsl">
                         <div class="row row_acvu  row-style ">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_vib1 col-style">
                                 <div class="module newsletter-footer1">
@@ -112,7 +113,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_in3d  col-style">
                         <div class="middle-content">
                             <div class="des">
-                               <?php echo $setting->short_description;?>
+<!--                               --><?php //echo $setting->short_description;?>
                             </div>
 
                         </div>

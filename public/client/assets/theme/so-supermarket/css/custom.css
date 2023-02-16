@@ -203,3 +203,7 @@ table tbody tr td{
 body svg{
 	display:block !important;
 }
+
+.block-policy1 ul li .item-inner .content strong{
+	/*line-height: 50px;*/
+}

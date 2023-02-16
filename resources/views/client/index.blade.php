@@ -22,11 +22,11 @@
             padding: 15px 10px;
         }
         .item-inner >img{
-            border-radius:50px;
+            border-radius:100%;
         }
         .item-inner:hover img{
             transition: 1s;
-            transform: scale(1.5);
+            transform: scale(1.2);
             border: 1px solid #280c2d;
         }
     </style>
@@ -61,17 +61,17 @@
                         </div>
                     </div>
 
-                    <!--top Biggapon-->
-                    @forelse($biggapons->where('place',\App\Models\Biggapon::TOP)->where('show_on_page',\App\Models\Biggapon::HOME_PAGE)->take(1) as $i=>$topBiggapon)
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_llqj  col-style">
-                            <div class="banners bannersb">
-                                <div class="banner">
-                                    <a href="{{URL::to($topBiggapon->target_url)}}"><img src="{{asset($topBiggapon->image)}}" alt="image"></a>
-                                </div>
-                            </div>
-                        </div><!--end row-->
-                    @empty
-                    @endforelse
+                    {{--<!--top Biggapon-->--}}
+                    {{--@forelse($biggapons->where('place',\App\Models\Biggapon::TOP)->where('show_on_page',\App\Models\Biggapon::HOME_PAGE)->take(1) as $i=>$topBiggapon)--}}
+                        {{--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_llqj  col-style">--}}
+                            {{--<div class="banners bannersb">--}}
+                                {{--<div class="banner">--}}
+                                    {{--<a href="{{URL::to($topBiggapon->target_url)}}"><img src="{{asset($topBiggapon->image)}}" alt="image"></a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div><!--end row-->--}}
+                    {{--@empty--}}
+                    {{--@endforelse--}}
                 </div>
 
             </div> <!--End Slider Container-->
@@ -101,22 +101,63 @@
                                 <div class="page-top">
                                     <div class="item-sub-cat"><ul><li> <a href="{{URL::to("product/categories?link=$category->link&itemNo=$key")}}" title="" target="_self">View All</a></li></ul></div>
                                 </div>
-                                <div class="text-center">
-                                    <a href="{{URL::to("product/category/$category->id?itemNo=$key")}}">
-                                        <img src="{{asset($category->icon_photo?$category->icon_photo:'images/default/default-image-200x200.jpg')}}" class="img-responsive center-block category-image" width="80px">
-                                        <p>{{$category->short_description}}</p>
-                                    </a>
 
-                                </div>
+                                @if($category->id==1)
+                                    <!--top Biggapon if category index 0-->
+                                        @forelse($biggapons->where('place',\App\Models\Biggapon::MIDDLE)->where('show_on_page',\App\Models\Biggapon::HOME_PAGE)->take(1) as $i=>$topBiggapon)
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_llqj  col-style">
+                                                <div class="banners bannersb">
+                                                    <div class="banner">
+                                                        <a href="{{URL::to($topBiggapon->target_url)}}"><img src="{{asset($topBiggapon->image)}}" alt="image"></a>
+                                                    </div>
+                                                </div>
+                                            </div><!--end row-->
+                                        @empty
+                                        @endforelse
+                                    @endif
+                                    @if($category->id==2)
+                                    <!--middle Biggapon if category index 1-->
+                                        @forelse($biggapons->where('place',\App\Models\Biggapon::TOP)->where('show_on_page',\App\Models\Biggapon::HOME_PAGE)->take(1) as $i=>$middleBiggapon)
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_llqj  col-style">
+                                                <div class="banners bannersb">
+                                                    <div class="banner">
+                                                        <a href="{{URL::to($middleBiggapon->target_url)}}"><img src="{{asset($middleBiggapon->image)}}" alt="image"></a>
+                                                    </div>
+                                                </div>
+                                            </div><!--end row-->
+                                        @empty
+                                        @endforelse
+                                @endif
+                                @if($category->id==3)
+                                    <!--bottom Biggapon if category index 0-->
+                                        @forelse($biggapons->where('place',\App\Models\Biggapon::BOTTOM)->where('show_on_page',\App\Models\Biggapon::HOME_PAGE)->take(1) as $i=>$bottomBiggapon)
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col_llqj  col-style">
+                                                <div class="banners bannersb">
+                                                    <div class="banner">
+                                                        <a href="{{URL::to($bottomBiggapon->target_url)}}"><img src="{{asset($bottomBiggapon->image)}}" alt="image"></a>
+                                                    </div>
+                                                </div>
+                                            </div><!--end row-->
+                                        @empty
+                                        @endforelse
+                                    @endif
+
+                                {{--<div class="text-center">--}}
+                                    {{--<a href="{{URL::to("product/category/$category->id?itemNo=$key")}}">--}}
+                                        {{--<img src="{{asset($category->icon_photo?$category->icon_photo:'images/default/default-image-200x200.jpg')}}" class="img-responsive center-block category-image" width="88px">--}}
+                                        {{--<p>{{$category->category_name}}</p>--}}
+                                    {{--</a>--}}
+
+                                {{--</div>--}}
 
                                 <div class="categoryslider-content hide-featured preset01-6 preset02-4 preset03-3 preset04-2 preset05-1">
                                     <div class="block-policy1">
                                         <ul>
                                             @forelse($category->subCategoryData as $subCategory)
-                                                <li class="item-1">
+                                                <li class="item-1" style="{{$category->id==3?"width:20%":''}}">
                                                     <a href="{{URL::to("product/category/$category->id?sub_cat=$subCategory->link&itemNo=$key")}}" class="item-inner" title="{{$subCategory->sub_category_name}}">
                                                         {{--<i class="fa fa-book fa-2x"></i>--}}
-                                                        <img src="{{asset($subCategory->icon_photo?$subCategory->icon_photo:'images/default/default.png')}}" title="{{$subCategory->sub_category_name}}" class="img-responsive center-block" width="50px">
+                                                        <img src="{{asset($subCategory->icon_photo?$subCategory->icon_photo:'images/default/default.png')}}" title="{{$subCategory->sub_category_name}}" class="img-responsive center-block" width="140px">
                                                         <div class="content">
 
                                                             <strong> {{$subCategory->sub_category_name}} </strong>
@@ -147,11 +188,6 @@
                     @endforelse
                 </div>
             </div>
-
-
-
-
-
         </div><!-- so-page-builder -->
     </div><!-- end content -->
     @include('client.layouts.partials.right-side-menu')
