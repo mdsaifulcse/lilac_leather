@@ -534,16 +534,16 @@
                                         @endif
                                     </div>
 
-                                    {{--<div class="">--}}
-                                        {{--<label for="example-text-input" class="col-form-label">Show at home page?<sup class="text-danger">*</sup></label>--}}
-                                        {{--{!! Form::select('show_home', $yesNoStatus,[], ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}--}}
+                                    <div class="">
+                                        <label for="example-text-input" class="col-form-label">Show at home page?<sup class="text-danger">*</sup></label>
+                                        {!! Form::select('show_home', $yesNoStatus,[], ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}
 
-                                        {{--@if ($errors->has('show_home'))--}}
-                                            {{--<span class="help-block">--}}
-                                            {{--<strong class="text-danger">{{ $errors->first('show_home') }}</strong>--}}
-                                        {{--</span>--}}
-                                        {{--@endif--}}
-                                    {{--</div>--}}
+                                        @if ($errors->has('show_home'))
+                                            <span class="help-block">
+                                            <strong class="text-danger">{{ $errors->first('show_home') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
 
                                     {{--<div class="">--}}
                                         {{--<label for="example-text-input" class="col-form-label">Is feature?<sup class="text-danger">*</sup></label>--}}
@@ -577,16 +577,16 @@
                                         {{--@endif--}}
                                     {{--</div>--}}
 
-                                    {{--<div class="">--}}
-                                        {{--<label for="example-text-input" class="col-form-label">Most Popular?<sup class="text-danger">*</sup></label>--}}
-                                        {{--{!! Form::select('is_most_popular', $yesNoStatus,[], ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}--}}
+                                    <div class="">
+                                        <label for="example-text-input" class="col-form-label">Most Popular?<sup class="text-danger">*</sup></label>
+                                        {!! Form::select('is_most_popular', $yesNoStatus,[], ['placeholder' => 'Select One *','class' => 'form-control','required'=>true]) !!}
 
-                                        {{--@if ($errors->has('is_most_popular'))--}}
-                                            {{--<span class="help-block">--}}
-                                                {{--<strong class="text-danger">{{ $errors->first('is_most_popular') }}</strong>--}}
-                                            {{--</span>--}}
-                                        {{--@endif--}}
-                                    {{--</div>--}}
+                                        @if ($errors->has('is_most_popular'))
+                                            <span class="help-block">
+                                                <strong class="text-danger">{{ $errors->first('is_most_popular') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
 
                                     {{--<div class="">--}}
                                         {{--<label for="example-text-input" class="col-form-label">Top Rated?<sup class="text-danger">*</sup></label>--}}

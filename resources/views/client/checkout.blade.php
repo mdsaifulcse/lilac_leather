@@ -17,7 +17,7 @@
         <ul class="breadcrumb">
             <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i></a></li>
             <li><a href="{{URL::to('/cart-products')}}">Shopping Cart</a></li>
-            <li><a href="{{URL::to('/checkout/checkout')}}">Checkout</a></li>
+            <li><a href="{{URL::to('/checkout/checkout')}}">Checkout @if(Session::has('error')) {{Session::get("error")}} @else '1111' @endif</a></li>
         </ul>
         <div class="row">
 
@@ -35,7 +35,7 @@
                             ?>
 
                             <fieldset id="address">
-                                <h2 class="secondary-title"><i class="fa fa-map-marker"></i>Your Billing Address</h2>
+                                <h2 class="secondary-title"><i class="fa fa-map-marker"></i>Your Billing Address {{$errors}}</h2>
                                 <div class=" checkout-payment-form">
                                     <div class="box-inner">
 
@@ -68,7 +68,7 @@
                                                         </label>
                                                     </div>
                                                     <div class="form-group company-input">
-                                                        <input type="text" name="billing_name" value="{{old('billing_name',auth()->user()->name)}}" placeholder="Billing Name *" class="form-control billing" >
+                                                        <input type="text" name="billing_name" value="{{old('billing_name')}}" required placeholder="Billing Name *" class="form-control billing" >
                                                         @if ($errors->has('billing_name'))
                                                             <span class="help-block">
                                                     <strong class="text-danger">{{ $errors->first('billing_name') }}</strong>
@@ -76,7 +76,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" name="billing_email" value="{{old('billing_email',auth()->user()->email)}}" placeholder="Billing Email"  class="form-control billing">
+                                                        <input type="email" name="billing_email" value="{{old('billing_email')}}" required placeholder="Billing Email"  class="form-control billing">
                                                         @if ($errors->has('billing_email'))
                                                             <span class="help-block">
                                                     <strong class="text-danger">{{ $errors->first('billing_email') }}</strong>
@@ -84,7 +84,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="form-group ">
-                                                        <input type="text" name="billing_phone" value="{{old('billing_phone',auth()->user()->mobile)}}" placeholder="Billing Phone *" class="form-control billing" >
+                                                        <input type="text" name="billing_phone" value="{{old('billing_phone')}}" required minlength="11" maxlength="15" placeholder="Billing Phone *" class="form-control billing" >
                                                         @if ($errors->has('billing_phone'))
                                                             <span class="help-block">
                                                     <strong class="text-danger">{{ $errors->first('billing_phone') }}</strong>
@@ -92,7 +92,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="form-group ">
-                                                        <input type="text" name="billing_city" value="{{old('billing_city')}}" placeholder="City *" class="form-control billing" >
+                                                        <input type="text" name="billing_city" value="{{old('billing_city')}}" required minlength="4" maxlength="20" placeholder="City *" class="form-control billing" >
                                                         @if ($errors->has('billing_city'))
                                                             <span class="help-block">
                                                     <strong class="text-danger">{{ $errors->first('billing_city') }}</strong>
@@ -100,7 +100,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="form-group ">
-                                                        <input type="text" name="billing_post" value="{{old('billing_post')}}" placeholder="Post *" class="form-control billing" >
+                                                        <input type="text" name="billing_post" value="{{old('billing_post')}}" required minlength="4" maxlength="20" placeholder="Post *" class="form-control billing" >
                                                         @if ($errors->has('billing_post'))
                                                             <span class="help-block">
                                                     <strong class="text-danger">{{ $errors->first('billing_post') }}</strong>
@@ -108,7 +108,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="form-group ">
-                                                        <input type="text" name="billing_post_code" value="{{old('billing_post_code')}}" placeholder="Post Code *" class="form-control billing" >
+                                                        <input type="text" name="billing_post_code" value="{{old('billing_post_code')}}" required minlength="4" maxlength="20" placeholder="Post Code *" class="form-control billing" >
                                                         @if ($errors->has('billing_post_code'))
                                                             <span class="help-block">
                                                     <strong class="text-danger">{{ $errors->first('billing_post_code') }}</strong>
@@ -118,9 +118,9 @@
 
                                                     <div class="form-group ">
                                                         @if($user->profile)
-                                                            <textarea name="billing_street_address" rows="3" class="form-control billing" placeholder="Billing Address *" >{{old('billing_street_address',$user->profile->address)}}</textarea>
+                                                            <textarea name="billing_street_address" rows="3" class="form-control billing" required placeholder="Billing Address *" >{{old('billing_street_address',$user->profile->address)}}</textarea>
                                                         @else
-                                                            <textarea name="billing_street_address" rows="3" class="form-control billing" placeholder="Billing Address *" >{{old('billing_street_address')}}</textarea>
+                                                            <textarea name="billing_street_address" rows="3" class="form-control billing" required placeholder="Billing Address *" >{{old('billing_street_address')}}</textarea>
                                                         @endif
 
                                                             @if ($errors->has('billing_street_address'))

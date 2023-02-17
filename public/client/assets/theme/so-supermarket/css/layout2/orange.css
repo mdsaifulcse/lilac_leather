@@ -5771,7 +5771,7 @@ span.fa-stack .fa-star.fa-stack-2x:before {
   margin-bottom: 0;
   text-align: center; }
 .products-list .product-layout .product-item-container .left-block .product-image-container img {
-  margin: 0 auto; }
+  margin: 0 auto;padding-top:8px; }
 .products-list .product-layout .product-item-container .rating-box {
   float: left;
   margin-right: 5px; }

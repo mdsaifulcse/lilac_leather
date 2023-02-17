@@ -45,7 +45,9 @@ class CompanyServiceProvider extends ServiceProvider
                 $biggapons=Biggapon::where(['status'=>Biggapon::ACTIVE,'show_on_page'=>Biggapon::HOME_PAGE])->orderBy('serial_num','ASC')->take(10)->get();
                 $sideA=Biggapon::where(['status'=>Biggapon::ACTIVE,'show_on_page'=>Biggapon::HOME_PAGE,'place'=>Biggapon::SIDE])->orderBy('serial_num','ASC')->take(3)->get();
 
-                $view->with(['biggapons'=>$biggapons,'sideA'=>$sideA]);
+                $mostPopularProducts=Product::statusFilterProducts(['status'=>Product::PUBLISHED,'is_most_popular'=>Product::YES,'show_home'=>Product::YES])->take(30)
+                    ->orderBy('products.id','DESC')->get();
+                $view->with(['biggapons'=>$biggapons,'sideA'=>$sideA,'mostPopularProducts'=>$mostPopularProducts]);
             });
 
         View::composer( // for frontend menu --------------

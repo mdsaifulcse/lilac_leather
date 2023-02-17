@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{asset('/client/assets')}}/theme/so-supermarket/css/layout2/orange.css">
     <link rel="stylesheet" href="{{asset('/client/assets')}}/theme/so-supermarket/css/header/header2.css">
     <link rel="stylesheet" href="{{asset('/client/assets')}}/theme/so-supermarket/css/footer/footer2.css">
+    <link rel="stylesheet" href="{{asset('/client/assets')}}/javascript/so_home_slider/css/owl.carousel.css">
     <link href="{{asset('/')}}/assets/vendors/general/sweetalert2/dist/sweetalert2.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{asset('/client/assets')}}/theme/so-supermarket/css/responsive.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>
@@ -63,6 +64,7 @@
 <script src="{{asset('/client/assets')}}/javascript/so_countdown/js/jquery.cookie.js"></script>
 <script src="{{asset('/client/assets')}}/javascript/so_tools/js/script.js"></script>
 <script src="{{asset('/client/assets')}}/javascript/so_megamenu/so_megamenu.js"></script>
+<script src="{{asset('/client/assets')}}/javascript/so_home_slider/js/owl.carousel.js"></script>
 <script src="{{asset('/')}}/assets/vendors/general/sweetalert2/dist/sweetalert2.min.js" type="text/javascript"></script>
 <!--end:: Global Optional Vendors -->
 @if(Session::has('success'))

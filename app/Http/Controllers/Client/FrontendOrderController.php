@@ -110,6 +110,7 @@ class FrontendOrderController extends Controller
 
         DB::beginTransaction();
         try{
+            //return $request;
             $validator = Validator::make($request->all(), [
                 'address_id' => 'required',
                 'billing_name' => 'required_if:address_id,==,other_address|max:100',
@@ -132,8 +133,10 @@ class FrontendOrderController extends Controller
             ]);
             if ($validator->fails())
             {
+                //return $validator->getmessagebag();
                 return redirect()->back()->withErrors($validator)->withInput();
-                //return redirect()->back()->with('error','Something Error found.'.$validator->getmessagebag());
+
+                return redirect()->back()->with('error','Something Error found. '.$validator->getmessagebag());
             }
 
             $sessionId='';
