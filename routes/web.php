@@ -257,6 +257,8 @@ Route::group(['namespace'=>'App\Http\Controllers\Client'], function() {
     Route::get('/archive', 'ArchiveController@archiveNews');
 
     Route::get('/about-us.html', 'PageController@aboutUs');
+    Route::get('/mission-vision.html', 'PageController@ourMissionVision');
+    Route::get('/our-values.html', 'PageController@ourValues');
 
     Route::get('/contact.htm', 'PageController@contactUs');
 

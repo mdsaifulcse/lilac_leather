@@ -70,6 +70,7 @@ return [
     'INFORMATION'=>'INFORMATION',
     'About Us'=>'About Us',
     'Contact Us'=>'Contact Us',
+    'mission-vision'=>'Mission & Vision',
     'Privacy Policy'=>'Privacy Policy',
     'SIGN UP FOR NEWSLETTER'=>'SIGN UP FOR NEWSLETTER',
     'We’ll never share your email address with a third-party.'=>'We’ll never share your email address with a third-party',

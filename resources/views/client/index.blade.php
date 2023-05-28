@@ -47,7 +47,7 @@
                                                 @forelse($sliders as $slider)
                                                     <div class="item">
                                                         <a href="javascript:;" title="{{$slider->caption}}" target="_self">
-                                                            <img class="lazyload"   src="" data-src="{{asset($slider->image)}}"  alt="slide 1" />
+                                                            <img class="lazyload"   src="" data-src="{{asset($slider->image)}}"  alt="{{$slider->caption}}" />
                                                         </a>
                                                         <div class="sohomeslider-description"> </div>
                                                     </div>

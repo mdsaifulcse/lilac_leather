@@ -12,11 +12,23 @@ use DB,Auth,Validator,MyHelper,Route;
 
 class PageController extends Controller
 {
+    public function ourMissionVision()
+    {
+        $setting=Setting::first();
+        return view('client.missiion-vision',compact('setting'));
+    }
+
     public function aboutUs()
     {
         $setting=Setting::first();
         return view('client.about-us',compact('setting'));
     }
+    public function ourValues()
+    {
+        $setting=Setting::first();
+        return view('client.our-values',compact('setting'));
+    }
+
     public function contactUs()
     {
         $setting=Setting::first();

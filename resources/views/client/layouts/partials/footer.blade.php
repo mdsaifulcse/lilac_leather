@@ -7,9 +7,9 @@
                 <div class="row row_p2b9  footer-middle ">
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col_4202  col-style">
                         <div class="infos-footer">
-                            <a href="{{url('/')}}">
-                                <img src="{{asset($setting->logo)}}"  data-src="{{asset($setting->logo)}}" title="{{$setting->company_name}} " alt="{{$setting->company_name}}"
-                                     style="width: 150px;margin-left:10%;border-radius:50%;"></a>
+                            {{--<a href="{{url('/')}}">--}}
+                                {{--<img src="{{asset($setting->logo)}}"  data-src="{{asset($setting->logo)}}" title="{{$setting->company_name}} " alt="{{$setting->company_name}}"--}}
+                                     {{--style="width: 90px;margin-left:10%;border-radius:50%;"></a>--}}
                             <ul>
                                 <li class="adres">
                                    Address: <?php echo nl2br($setting->address1);?>
@@ -20,9 +20,6 @@
                                 
                                 <li class="mail">
                                    Email: {{$setting->email1}}
-                                </li>
-                                <li class="time">
-                                    {{__('frontend.Open time')}}: 24/7
                                 </li>
                             </ul>
                         </div>
@@ -41,7 +38,7 @@
                                             {{--</li>--}}
                                         {{--@empty--}}
                                         {{--@endforelse--}}
-                                        {!! QrCode::size(140)->generate(Request::url()); !!}
+                                        {!! QrCode::size(120)->generate(Request::url()); !!}
                                         <p>Scan & Visit Site</p>
                                     </ul>
                                 </div>
@@ -56,6 +53,7 @@
                                 <div class="modcontent">
                                     <ul class="menu">
                                         <li><a href="{{URL::to('/about-us.html')}}">{{__('frontend.About Us')}}</a></li>
+                                        <li><a href="{{URL::to('mission-vision.html')}}">{{__('frontend.mission-vision')}}</a></li>
                                         <li><a href="{{URL::to('/contact.htm')}}">{{__('frontend.Contact Us')}}</a></li>
                                         <li><a href="{{URL::to('/page/privacy-policy')}}">{{__('frontend.Privacy Policy')}}</a></li>
                                     </ul>

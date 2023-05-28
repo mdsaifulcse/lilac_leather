@@ -75,6 +75,7 @@ return [
     'INFORMATION'=>'তথ্য',
     'About Us'=>'আমাদের সম্পর্কে',
     'Contact Us'=>'যোগাযোগ করুন',
+    'mission-vision'=>'মিশন & ভিশন',
     'Privacy Policy'=>'গোপনীয়তা নীতি',
     'SIGN UP FOR NEWSLETTER'=>'নিউজলেটারের জন্য সাইন আপ করুন',
     'We’ll never share your email address with a third-party.'=>'আমরা কখনই আপনার ইমেল ঠিকানা তৃতীয় পক্ষের সাথে শেয়ার করব না।',

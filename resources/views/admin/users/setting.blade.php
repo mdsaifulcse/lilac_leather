@@ -444,9 +444,10 @@
             theme: 'modern',
             plugins: 'image code link lists textcolor imagetools colorpicker ',
             browser_spellcheck: true,
-            toolbar1: 'formatselect | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+            toolbar1: 'formatselect | fontselect  | bold italic strikethrough | link image | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | lineheight',
             // enable title field in the Image dialog
             image_title: true,
+            content_style: "body { line-height: 2; }",
             setup: function (ed) {
                 ed.on('keyup', function (e) {
                     var count = CountCharacters();

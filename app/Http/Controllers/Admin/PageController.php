@@ -236,8 +236,8 @@ class PageController extends Controller
             if (!empty($pagePhoto) && file_exists($pagePhoto->photo))
             {
                 unlink($pagePhoto->photo);
+                $pagePhoto->delete();
             }
-            $pagePhoto->delete();
 
             $page->delete();
 

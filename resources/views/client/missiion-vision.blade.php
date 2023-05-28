@@ -1,13 +1,18 @@
 @extends('client.layouts.master')
 
 @section('head')
-    <title> About Us | {{$setting->company_name}} </title>
+    <title>Vision, Mission and Values | {{$setting->company_name}} </title>
     <meta name="description" content="" /><meta name="keywords" content=" " />
 @endsection
 
 
 @section('style')
-
+    <style>
+        .our-values-details{
+            text-indent: 10px;
+            padding-bottom: 30px;
+        }
+    </style>
     @endsection
 
 @section('content')
@@ -15,7 +20,7 @@
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{{URL::to('/')}}">About Us</a></li>
+            <li><a href="{{URL::to('/')}}">Our Vision, Mission</a></li>
         </ul>
 
     <section class="box-white" style="margin-top: 0px;">
@@ -31,29 +36,8 @@
                                             <div class="so-homeslider sohomeslider-inner-1">
                                                 <!-- Data come form CompanyServiceProvider -->
                                                 <div class="item">
-                                                    <a href="javascript:;" title="" target="_self">
-                                                        <img class="lazyload" src="" data-src="{{asset('/images/about-us/1.png')}}"  alt="slide 1" />
-                                                    </a>
-                                                    <div class="sohomeslider-description"> </div>
-                                                </div>
-
-                                                <div class="item">
-                                                    <a href="javascript:;" title="" target="_self">
-                                                        <img class="lazyload" src="" data-src="{{asset('/images/about-us/2.png')}}"  alt="slide 2" />
-                                                    </a>
-                                                    <div class="sohomeslider-description"> </div>
-                                                </div>
-
-                                                <div class="item">
-                                                    <a href="javascript:;" title="" target="_self">
-                                                        <img class="lazyload" src="" data-src="{{asset('/images/about-us/3.png')}}"  alt="slide 3" />
-                                                    </a>
-                                                    <div class="sohomeslider-description"> </div>
-                                                </div>
-
-                                                <div class="item">
-                                                    <a href="javascript:;" title="" target="_self">
-                                                        <img class="lazyload" src="" data-src="{{asset('/images/about-us/4.png')}}"  alt="slide 4" />
+                                                    <a href="javascript:;" title="Our Vision, Mission" target="_self">
+                                                        <img class="lazyload" src="" data-src="{{asset('/images/about-us/3.png')}}"  alt="Our Vision, Mission" />
                                                     </a>
                                                     <div class="sohomeslider-description"> </div>
                                                 </div>
@@ -75,26 +59,17 @@
                     {{--<img alt="Demoonews.com" src="{{asset('/client')}}/media/common/placeholder-xs.png" data-src="{{asset($setting->logo)}}" class="lazyload" style="width:100%;">--}}
                 {{--</div>--}}
                 <div class="col-sm-12">
-                    <div style="padding:35px 0px;font-family:'Poppins', sans-serif;">
+                    <div style="padding:35px 0px;">
+                        <h2><u>OUR VISION</u></h2>
+                        <p>
+                            Our vision is to become an inspiration for global brands by attaining 100% customer satisfaction worldwide through continual quality improvement of our products.
+                        </p>
+                        <br>
+                        <h2><u>OUR MISSION</u></h2>
 
-                        <p>
-                            Lilac Leather has been sustaining a strong business positioning in the Bangladesh jute & leather industry with its exclusive jute & leather products and client-centric management principles.
+                        <p>To understand and satisfy customer’s wants and needs, we always try to add value, reduce costs and provide innovative thinking for improvement of our product quality, with world class compliance and working standards.
                         </p>
-                        <p>The company does not deter from discharging its social and environmental responsibility, and ensures maintenance of its premises in the most eco-friendliest way.</p>
-                        <p>
-                            Over the years, the company has made smart investments on technology and installed sophisticated machinery and equipment across its various business units. The manufacturing cell is armed with latest machines and tools that aid in making the offered production in a smooth manner. Further, realizing our social & environmental responsibility, we have maintained our premises in the eco-friendly way.
-                        </p>
-                        <p>
-                            It is the dedication and industrious efforts of our team members that empower us to meet the clients demands successfully. We are supported by creative craftsmen, designers, skilled workers, production supervisors, delivery personnel and sales professionals. They put their foot to serve the clients in the best manner and take the company business to great levels. Our employees are well versed with client’s requirements, business competition and market fluctuating trends. Their knowledge helps us to outmatch our client’s expectations and stay ahead in the marketplace.
-                        </p>
-                        {{--<?php--}}
-                        {{--echo $setting->short_description;--}}
-                        {{--?>--}}
-                        {{--<br>--}}
-
-                        {{--<?php--}}
-                        {{--echo $setting->description;--}}
-                        {{--?>--}}
+                        <p>Our mission is to manufacture beautiful, high-quality jute & Leather handicraft, jewelry, fashionwear, Bag etc. that empower artisans and encourage responsible consumption.</p>
                     </div>
                 </div>
             </div>

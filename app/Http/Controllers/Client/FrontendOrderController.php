@@ -114,8 +114,8 @@ class FrontendOrderController extends Controller
             $validator = Validator::make($request->all(), [
                 'address_id' => 'required',
                 'billing_name' => 'required_if:address_id,==,other_address|max:100',
-                'billing_email' => 'required_if:address_id,==,other_address|email|max:100',
-                'billing_phone' => 'required_if:address_id,==,other_address|min:11|max:15',
+                'billing_email' => 'required_if:address_id,==,other_address|nullable|email|max:100',
+                'billing_phone' => 'required_if:address_id,==,other_address|nullable|min:11|max:15',
                 'billing_city' => 'required_if:address_id,==,other_address|max:150',
                 'billing_post' => 'required_if:address_id,==,other_address|max:150',
                 'billing_post_code' => 'required_if:address_id,==,other_address|max:20',

@@ -33,9 +33,9 @@
     <section class="box-white paddingBottom20">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 text-center">
+                <div class="col-sm-4 text-center" style="padding-bottom:20px">
 
-                    @if(isset($page->pagePhoto) && file_exists($page->pagePhoto->photo))
+                    @if(isset($page->pagePhoto))
 
                     <img alt="" src="{{asset('/client')}}/media/common/placeholder-xs.png" data-src="{{asset($page->pagePhoto->photo)}}" class="lazyload" style="width:100%;">
 

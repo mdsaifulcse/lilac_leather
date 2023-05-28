@@ -17,7 +17,7 @@
         <ul class="breadcrumb">
             <li><a href="{{URL::to('/')}}"><i class="fa fa-home"></i></a></li>
             <li><a href="{{URL::to('/cart-products')}}">Shopping Cart</a></li>
-            <li><a href="{{URL::to('/checkout/checkout')}}">Checkout @if(Session::has('error')) {{Session::get("error")}} @else '1111' @endif</a></li>
+            <li><a href="{{URL::to('/checkout/checkout')}}">Checkout</a></li>
         </ul>
         <div class="row">
 
@@ -35,7 +35,7 @@
                             ?>
 
                             <fieldset id="address">
-                                <h2 class="secondary-title"><i class="fa fa-map-marker"></i>Your Billing Address {{$errors}}</h2>
+                                <h2 class="secondary-title"><i class="fa fa-map-marker"></i>Your Billing Address</h2>
                                 <div class=" checkout-payment-form">
                                     <div class="box-inner">
 
@@ -45,11 +45,11 @@
                                                     <div class="form-group company-input" style="margin-left:15px;">
                                                         @foreach($user->relUserAddress as $address)
                                                         <label class="radio-inline">
-                                                            <input type="radio" name="address_id" class="user-address" value="{{$address->id}}">{{$address->address1}} ({{$address->type}})
+                                                            <input type="radio" name="address_id" class="user-address" required value="{{$address->id}}">{{$address->address1}} ({{$address->type}})
                                                         </label>
                                                             @endforeach
                                                             <label class="radio-inline">
-                                                                <input type="radio" name="address_id" value="other_address" class="user-address">Other Address
+                                                                <input type="radio" name="address_id" value="other_address" required class="user-address">Other Address
                                                             </label>
                                                     </div>
                                                     <hr>
@@ -84,7 +84,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="form-group ">
-                                                        <input type="text" name="billing_phone" value="{{old('billing_phone')}}" required minlength="11" maxlength="15" placeholder="Billing Phone *" class="form-control billing" >
+                                                        <input type="text" name="billing_phone" value="{{old('billing_phone')}}" required minlength="11" maxlength="15"  placeholder="Billing Phone *" class="form-control billing" >
                                                         @if ($errors->has('billing_phone'))
                                                             <span class="help-block">
                                                     <strong class="text-danger">{{ $errors->first('billing_phone') }}</strong>
@@ -166,7 +166,7 @@
                                                 @endif
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" name="shipping_email" value="{{old('shipping_email')}}" placeholder="Email *" required  class="form-control shipping">
+                                                <input type="email" name="shipping_email" value="{{old('shipping_email')}}" placeholder="Email *" required  class="form-control shipping">
                                                 @if ($errors->has('shipping_email'))
                                                     <span class="help-block">
                                                     <strong class="text-danger">{{ $errors->first('shipping_email') }}</strong>
@@ -174,7 +174,7 @@
                                                 @endif
                                             </div>
                                             <div class="form-group ">
-                                                <input type="text" name="shipping_phone" value="{{old('shipping_phone')}}" placeholder="Phone *" required class="form-control shipping">
+                                                <input type="text" name="shipping_phone" value="{{old('shipping_phone')}}" placeholder="11 digit valid phone" required class="form-control shipping">
                                                 @if ($errors->has('shipping_phone'))
                                                     <span class="help-block">
                                                     <strong class="text-danger">{{ $errors->first('shipping_phone') }}</strong>
